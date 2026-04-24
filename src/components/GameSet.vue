@@ -341,19 +341,19 @@ const botAction = () => {
     table.amain.extra.points = 0;
   }
 
-  if (table.a1 && table.a1.extra.supportNekroRounds >= 2) {
+  if (table.a1 && table.a1.name === 'Support Nekro' && table.a1.extra.supportNekroRounds >= 2) {
     table.a1.extra.supportNekroRounds = 0;
     table.alife += 2;
   }
-  if (table.a2 && table.a2.extra.supportNekroRounds >= 2) {
+  if (table.a2 && table.a2.name === 'Support Nekro' && table.a2.extra.supportNekroRounds >= 2) {
     table.a2.extra.supportNekroRounds = 0;
     table.alife += 2;
   }
-  if (table.a3 && table.a3.extra.supportNekroRounds >= 2) {
+  if (table.a3 && table.a3.name === 'Support Nekro' && table.a3.extra.supportNekroRounds >= 2) {
     table.a3.extra.supportNekroRounds = 0;
     table.alife += 2;
   }
-  if (table.a4 && table.a4.extra.supportNekroRounds >= 2) {
+  if (table.a4 && table.a4.name === 'Support Nekro' && table.a4.extra.supportNekroRounds >= 2) {
     table.a4.extra.supportNekroRounds = 0;
     table.alife += 2;
   }
