@@ -1,0 +1,35 @@
+{
+  "name": "batalo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "format": "prettier . --write",
+    "preview": "vite preview",
+    "patch": "generi log patch",
+    "minor": "generi log minor",
+    "major": "generi log major"
+  },
+  "dependencies": {
+    "@vueuse/core": "^14.2.1",
+    "pinia": "^3.0.4",
+    "unplugin-vue-components": "^32.0.0",
+    "vue": "^3.5.32",
+    "vue-i18n": "^11.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.2",
+    "@unocss/preset-web-fonts": "^66.6.8",
+    "@unocss/preset-wind3": "^66.6.8",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "generi": "^2.0.4",
+    "prettier": "^3.8.3",
+    "typescript": "~6.0.2",
+    "unocss": "^66.6.8",
+    "vite": "^8.0.9",
+    "vue-tsc": "^3.2.7"
+  }
+}

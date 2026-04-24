@@ -1,0 +1,3 @@
+<template>
+  <GameMain />
+</template>
