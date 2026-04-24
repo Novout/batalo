@@ -8,7 +8,7 @@
   </main>
   <main
     v-else
-    class="flex justify-between items-center flex-col w-full h-100vh"
+    class="flex overflow-y-auto justify-between items-center flex-col w-full h-100vh"
   >
     <div class="flex gap-25 w-full justify-center items-center">
       <GameCardMaster type="bot" :content="table.amain" />
@@ -107,7 +107,7 @@
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from "vue";
-import { champtions, gyniCards, thorinemCards } from "../defines/packs";
+import { champtions, external, gyniCards, thorinemCards } from "../defines/packs";
 import type { Maybe, Card, CardChampion } from "../types";
 import { random } from "../utils";
 import { useOptionsStore } from "../store/options";
@@ -249,7 +249,40 @@ const clickMaster = () => {
 const nextRound = () => {
   if (cycle.roundSet === "player") cycle.roundSet = "bot";
   else if (cycle.roundSet === "bot") cycle.roundSet = "player";
-  else if (cycle.roundSet === "combat") cycle.roundSet = "player";
+  else if (cycle.roundSet === "combat") {
+    cycle.roundSet = "player"
+
+    if(table.b1?.name === 'Valv, V Imutavel') cycle.roundAction++
+    if(table.b2?.name === 'Valv, V Imutavel') cycle.roundAction++
+    if(table.b3?.name === 'Valv, V Imutavel') cycle.roundAction++
+    if(table.b4?.name === 'Valv, V Imutavel') cycle.roundAction++
+
+    if(table.a1?.name === 'Raptor') {
+      table.a1 = external().phortem_fervent()
+    }
+    if(table.a2?.name === 'Raptor') {
+      table.a2 = external().phortem_fervent()
+    }
+    if(table.a3?.name === 'Raptor') {
+      table.a3= external().phortem_fervent()
+    }
+    if(table.a4?.name === 'Raptor') {
+      table.a4 = external().phortem_fervent()
+    }
+
+    if(table.b1?.name === 'Raptor') {
+      table.b1 = external().phortem_fervent()
+    }
+    if(table.b2?.name === 'Raptor') {
+      table.b2 = external().phortem_fervent()
+    }
+    if(table.b3?.name === 'Raptor') {
+      table.b3= external().phortem_fervent()
+    }
+    if(table.b4?.name === 'Raptor') {
+      table.b4 = external().phortem_fervent()
+    }
+  };
 
   cycle.round++;
 };
@@ -333,6 +366,7 @@ const setSelectCardInDrop = (target: string) => {
 };
 
 const botAction = () => {
+  // TODO: Valv, V Imutavel action
   const target = random(["a1", "a2", "a3", "a4"]);
   const card = random(table.acards) as Card;
 

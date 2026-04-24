@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex bg-cover flex-col bg-white gap-5 bg-dark p-15 rounded-xl shadow-2xl text-black"
+    class="flex flex-col bg-white gap-5 bg-dark p-15 rounded-xl shadow-2xl text-black"
   >
     <div class="flex gap-5 w-full items-center">
       <p class="text-3xl">{{ $t("menu.playerDeck") }}</p>

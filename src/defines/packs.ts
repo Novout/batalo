@@ -1,5 +1,24 @@
 import type { Card, Icon } from "../types";
 import { shuffle } from "../utils";
+import { v4 as uuidv4 } from "uuid";
+
+export const external = () => {
+  const phortem_fervent = () => {
+    return {
+      name: "Phorthem Fervent",
+      id: uuidv4(),
+      icon: "fervent",
+      max: 0,
+      description: "",
+      textColor: "white",
+      backgroundColor: "blue",
+      atk: 5,
+      def: 2,
+    } as Card
+  }
+
+  return { phortem_fervent }
+}
 
 export const champtions = (type: "gyni" | "thorinem" | "letesno") => {
   return type === "gyni"
@@ -44,7 +63,31 @@ export const gyniCards = (): Card[] => {
     def: 1,
   } as Card;
 
+  const raptor = {
+    name: "Raptor",
+    icon: "raptor",
+    max: 2,
+    description: "After combat turn, this card is replaced by Phortem Fervent.",
+    textColor: "white",
+    backgroundColor: "blue",
+    atk: 3,
+    def: 1,
+  } as Card;
+
+  const valv = {
+    name: "Valv, V Imutavel",
+    icon: "valv",
+    max: 5,
+    description: "While the player remains on the field, they gain an extra action in the round.",
+    textColor: "white",
+    backgroundColor: "blue",
+    atk: 3,
+    def: 2,
+  } as Card;
+
   rawCards.push(empty_skeletion1);
+  rawCards.push(valv);
+  rawCards.push(raptor);
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {
@@ -52,7 +95,7 @@ export const gyniCards = (): Card[] => {
     }
   });
 
-  deck = deck.map((x, i) => ({ id: `${i + 1}`, ...x }));
+  deck = deck.map((x) => ({ id: uuidv4(), ...x }));
 
   return shuffle(deck);
 };
@@ -83,7 +126,7 @@ export const thorinemCards = (): Card[] => {
     }
   });
 
-  deck = deck.map((x, i) => ({ id: `${i + 1}`, ...x }));
+  deck = deck.map((x) => ({ id: uuidv4(), ...x }));
 
   return shuffle(deck);
 };

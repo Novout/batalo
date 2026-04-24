@@ -1,6 +1,6 @@
 export type Maybe<T> = T | undefined | null;
 
-export type Icon = "skeleton" | "mask" | "support";
+export type Icon = "skeleton" | "mask" | "support" | "raptor" | "valv" | 'fervent';
 
 export interface Card {
   id?: string;
