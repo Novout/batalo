@@ -106,463 +106,516 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, watch } from "vue";
-import { champtions, external, gyniCards, thorinemCards } from "../defines/packs";
-import type { Maybe, Card, CardChampion } from "../types";
-import { random } from "../utils";
-import { useOptionsStore } from "../store/options";
+  import { computed, reactive, ref, watch } from 'vue'
+  import {
+    champtions,
+    external,
+    gyniCards,
+    thorinemCards,
+  } from '../defines/packs'
+  import type { Maybe, Card, CardChampion } from '../types'
+  import { random } from '../utils'
+  import { useOptionsStore } from '../store/options'
 
-const onSelectCard = ref<Maybe<Card>>(null);
+  const onSelectCard = ref<Maybe<Card>>(null)
 
-const OPTIONS = useOptionsStore();
+  const OPTIONS = useOptionsStore()
 
-const table = reactive({
-  amain: undefined as Maybe<CardChampion>,
-  alife: 12,
-  a1: undefined as Maybe<Card>,
-  a2: undefined as Maybe<Card>,
-  a3: undefined as Maybe<Card>,
-  a4: undefined as Maybe<Card>,
-  adeck: [] as Card[],
-  acards: [] as Card[],
-  bmain: undefined as Maybe<CardChampion>,
-  blife: 12,
-  b1: undefined as Maybe<Card>,
-  b2: undefined as Maybe<Card>,
-  b3: undefined as Maybe<Card>,
-  b4: undefined as Maybe<Card>,
-  bcards: [] as Card[],
-  bdeck: [] as Card[],
-});
+  const table = reactive({
+    amain: undefined as Maybe<CardChampion>,
+    alife: 12,
+    a1: undefined as Maybe<Card>,
+    a2: undefined as Maybe<Card>,
+    a3: undefined as Maybe<Card>,
+    a4: undefined as Maybe<Card>,
+    adeck: [] as Card[],
+    acards: [] as Card[],
+    bmain: undefined as Maybe<CardChampion>,
+    blife: 12,
+    b1: undefined as Maybe<Card>,
+    b2: undefined as Maybe<Card>,
+    b3: undefined as Maybe<Card>,
+    b4: undefined as Maybe<Card>,
+    bcards: [] as Card[],
+    bdeck: [] as Card[],
+  })
 
-const cycle = reactive({
-  started: false,
-  roundSet: "player" as "player" | "bot" | "combat",
-  round: 1,
-  roundAction: 0,
-  action: true,
-});
+  const cycle = reactive({
+    started: false,
+    roundSet: 'player' as 'player' | 'bot' | 'combat',
+    round: 1,
+    roundAction: 0,
+    action: true,
+  })
 
-watch(
-  [computed(() => table.alife), computed(() => table.blife)],
-  ([alife, blife]) => {
-    if (alife <= 0) {
-    } else if (blife <= 0) {
-    }
-  },
-);
-
-watch(
-  computed(() => cycle.started),
-  (started) => {
-    if (!started) return;
-
-    if (OPTIONS.playerDeck === "Random") {
-      const deck = random(["gyni", "thorinem"]);
-      table.bdeck = deck === "gyni" ? gyniCards() : thorinemCards();
-      table.bmain = champtions(deck as "gyni" | "thorinem");
-    } else {
-      table.bdeck =
-        OPTIONS.playerDeck === "Gyni" ? gyniCards() : thorinemCards();
-      table.bmain = champtions(
-        OPTIONS.playerDeck === "Gyni" ? "gyni" : "thorinem",
-      );
-    }
-    for (let i = 0; i < 7; i++) {
-      const card = table.bdeck.pop();
-      if (card) table.bcards.push(card);
-    }
-
-    if (OPTIONS.botDeck === "Random") {
-      const deck = random(["gyni", "thorinem"]);
-      table.adeck = deck === "gyni" ? gyniCards() : thorinemCards();
-      table.amain = champtions(deck as "gyni" | "thorinem");
-    } else {
-      table.adeck = OPTIONS.botDeck === "Gyni" ? gyniCards() : thorinemCards();
-      table.amain = champtions(
-        OPTIONS.botDeck === "Gyni" ? "gyni" : "thorinem",
-      );
-    }
-    for (let i = 0; i < 7; i++) {
-      const card = table.bdeck.pop();
-      if (card) table.acards.push(card);
-    }
-  },
-);
-
-watch(
-  computed(() => cycle.roundSet),
-  (round) => {
-    if (cycle.roundAction === 4) {
-      cycle.roundSet = "combat";
-      cycle.roundAction = 0;
-
-      combatRunner();
-    } else if (round === "player") {
-      const nextCard = table.bdeck.pop();
-      if (nextCard) table.bcards.push(nextCard);
-      cycle.action = true;
-      cycle.roundAction++;
-
-      if (table.b1 && table.b1.extra?.supportNekroRounds >= 2) {
-        table.b1.extra.supportNekroRounds = 0;
-        table.blife += 2;
+  watch(
+    [computed(() => table.alife), computed(() => table.blife)],
+    ([alife, blife]) => {
+      if (alife <= 0) {
+      } else if (blife <= 0) {
       }
-      if (table.b2 && table.b2.extra?.supportNekroRounds >= 2) {
-        table.b2.extra.supportNekroRounds = 0;
-        table.blife += 2;
+    },
+  )
+
+  watch(
+    computed(() => cycle.started),
+    (started) => {
+      if (!started) return
+
+      if (OPTIONS.playerDeck === 'Random') {
+        const deck = random(['gyni', 'thorinem'])
+        table.bdeck = deck === 'gyni' ? gyniCards() : thorinemCards()
+        table.bmain = champtions(deck as 'gyni' | 'thorinem')
+      } else {
+        table.bdeck =
+          OPTIONS.playerDeck === 'Gyni' ? gyniCards() : thorinemCards()
+        table.bmain = champtions(
+          OPTIONS.playerDeck === 'Gyni' ? 'gyni' : 'thorinem',
+        )
       }
-      if (table.b3 && table.b3.extra?.supportNekroRounds >= 2) {
-        table.b3.extra.supportNekroRounds = 0;
-        table.blife += 2;
-      }
-      if (table.b4 && table.b4.extra?.supportNekroRounds >= 2) {
-        table.b4.extra.supportNekroRounds = 0;
-        table.blife += 2;
+      for (let i = 0; i < 7; i++) {
+        const card = table.bdeck.pop()
+        if (card) table.bcards.push(card)
       }
 
-      if (table.b1?.name === "Support Nekro") {
-        table.b1.extra.supportNekroRounds++;
-      } else if (table.b2?.name === "Support Nekro") {
-        table.b2.extra.supportNekroRounds++;
-      } else if (table.b3?.name === "Support Nekro") {
-        table.b3.extra.supportNekroRounds++;
-      } else if (table.b4?.name === "Support Nekro") {
-        table.b4.extra.supportNekroRounds++;
+      if (OPTIONS.botDeck === 'Random') {
+        const deck = random(['gyni', 'thorinem'])
+        table.adeck = deck === 'gyni' ? gyniCards() : thorinemCards()
+        table.amain = champtions(deck as 'gyni' | 'thorinem')
+      } else {
+        table.adeck = OPTIONS.botDeck === 'Gyni' ? gyniCards() : thorinemCards()
+        table.amain = champtions(
+          OPTIONS.botDeck === 'Gyni' ? 'gyni' : 'thorinem',
+        )
       }
-    } else if (round === "bot") {
-      const nextCard = table.adeck.pop();
-      if (nextCard) table.acards.push(nextCard);
-      botAction();
-      cycle.roundAction++;
-    }
-  },
-);
+      for (let i = 0; i < 7; i++) {
+        const card = table.bdeck.pop()
+        if (card) table.acards.push(card)
+      }
+    },
+  )
 
-const clickMaster = () => {
-  if (table.bmain?.name === "V Xwyyyw" && table.bmain.extra.points > 1) {
-    table.alife -= Number((table.bmain.extra.points / 2).toFixed(0));
-    table.bmain.extra.points = 0;
-  }
-};
+  watch(
+    computed(() => cycle.roundSet),
+    (round) => {
+      if (cycle.roundAction === 4) {
+        cycle.roundSet = 'combat'
+        cycle.roundAction = 0
 
-const nextRound = () => {
-  if (cycle.roundSet === "player") cycle.roundSet = "bot";
-  else if (cycle.roundSet === "bot") cycle.roundSet = "player";
-  else if (cycle.roundSet === "combat") {
-    cycle.roundSet = "player"
+        combatRunner()
+      } else if (round === 'player') {
+        const nextCard = table.bdeck.pop()
+        if (nextCard) table.bcards.push(nextCard)
+        cycle.action = true
+        cycle.roundAction++
 
-    if(table.b1?.name === 'Valv, V Imutavel') cycle.roundAction++
-    if(table.b2?.name === 'Valv, V Imutavel') cycle.roundAction++
-    if(table.b3?.name === 'Valv, V Imutavel') cycle.roundAction++
-    if(table.b4?.name === 'Valv, V Imutavel') cycle.roundAction++
+        if (table.b1 && table.b1.extra?.supportNekroRounds >= 2) {
+          table.b1.extra.supportNekroRounds = 0
+          table.blife += 2
+        }
+        if (table.b2 && table.b2.extra?.supportNekroRounds >= 2) {
+          table.b2.extra.supportNekroRounds = 0
+          table.blife += 2
+        }
+        if (table.b3 && table.b3.extra?.supportNekroRounds >= 2) {
+          table.b3.extra.supportNekroRounds = 0
+          table.blife += 2
+        }
+        if (table.b4 && table.b4.extra?.supportNekroRounds >= 2) {
+          table.b4.extra.supportNekroRounds = 0
+          table.blife += 2
+        }
 
-    if(table.a1?.name === 'Raptor') {
-      table.a1 = external().phortem_fervent()
-    }
-    if(table.a2?.name === 'Raptor') {
-      table.a2 = external().phortem_fervent()
-    }
-    if(table.a3?.name === 'Raptor') {
-      table.a3= external().phortem_fervent()
-    }
-    if(table.a4?.name === 'Raptor') {
-      table.a4 = external().phortem_fervent()
-    }
+        if (table.b1?.name === 'Support Nekro') {
+          table.b1.extra.supportNekroRounds++
+        } else if (table.b2?.name === 'Support Nekro') {
+          table.b2.extra.supportNekroRounds++
+        } else if (table.b3?.name === 'Support Nekro') {
+          table.b3.extra.supportNekroRounds++
+        } else if (table.b4?.name === 'Support Nekro') {
+          table.b4.extra.supportNekroRounds++
+        }
+      } else if (round === 'bot') {
+        const nextCard = table.adeck.pop()
+        if (nextCard) table.acards.push(nextCard)
+        botAction()
+        cycle.roundAction++
+      }
+    },
+  )
 
-    if(table.b1?.name === 'Raptor') {
-      table.b1 = external().phortem_fervent()
-    }
-    if(table.b2?.name === 'Raptor') {
-      table.b2 = external().phortem_fervent()
-    }
-    if(table.b3?.name === 'Raptor') {
-      table.b3= external().phortem_fervent()
-    }
-    if(table.b4?.name === 'Raptor') {
-      table.b4 = external().phortem_fervent()
-    }
-  };
-
-  cycle.round++;
-};
-
-const setSelectCardInDrop = (target: string) => {
-  if (!cycle.action) {
-    onSelectCard.value = undefined;
-    return;
-  }
-
-  if (cycle.roundSet === "bot" || cycle.roundSet === "combat") {
-    onSelectCard.value = undefined;
-    return;
-  }
-
-  if (onSelectCard.value && onSelectCard.value.name === "Empty Skeleton") {
-    let total = 1;
-    if (table.b1?.name === "Empty Skeleton" && target !== "b1") total++;
-    if (table.b2?.name === "Empty Skeleton" && target !== "b2") total++;
-    if (table.b3?.name === "Empty Skeleton" && target !== "b3") total++;
-    if (table.b4?.name === "Empty Skeleton" && target !== "b4") total++;
-
-    onSelectCard.value.def =
-      total === 1 ? 1 : total === 2 ? 2 : total === 3 ? 4 : total === 4 ? 8 : 8;
-    onSelectCard.value.atk =
-      total === 1 ? 1 : total === 2 ? 2 : total === 3 ? 4 : total === 4 ? 8 : 8;
-
-    if (table.b1?.name === "Empty Skeleton") {
-      table.b1.atk *= 2;
-      table.b1.def *= 2;
-    }
-    if (table.b2?.name === "Empty Skeleton") {
-      table.b2.atk *= 2;
-      table.b2.def *= 2;
-    }
-    if (table.b3?.name === "Empty Skeleton") {
-      table.b3.atk *= 2;
-      table.b3.def *= 2;
-    }
-    if (table.b4?.name === "Empty Skeleton") {
-      table.b4.atk *= 2;
-      table.b4.def *= 2;
+  const clickMaster = () => {
+    if (table.bmain?.name === 'V Xwyyyw' && table.bmain.extra.points > 1) {
+      table.alife -= Number((table.bmain.extra.points / 2).toFixed(0))
+      table.bmain.extra.points = 0
     }
   }
 
-  if (!table.b1 && target === "b1") {
-    table.b1 = onSelectCard.value;
-    table.bcards = table.bcards.filter(
-      (item) => item.id !== onSelectCard.value?.id,
-    );
-    onSelectCard.value = undefined;
-    cycle.action = false;
-  }
+  const nextRound = () => {
+    if (cycle.roundSet === 'player') cycle.roundSet = 'bot'
+    else if (cycle.roundSet === 'bot') cycle.roundSet = 'player'
+    else if (cycle.roundSet === 'combat') {
+      cycle.roundSet = 'player'
 
-  if (!table.b2 && target === "b2") {
-    table.b2 = onSelectCard.value;
-    table.bcards = table.bcards.filter(
-      (item) => item.id !== onSelectCard.value?.id,
-    );
-    onSelectCard.value = undefined;
-    cycle.action = false;
-  }
+      if (table.b1?.name === 'Valv, V Imutavel') cycle.roundAction++
+      if (table.b2?.name === 'Valv, V Imutavel') cycle.roundAction++
+      if (table.b3?.name === 'Valv, V Imutavel') cycle.roundAction++
+      if (table.b4?.name === 'Valv, V Imutavel') cycle.roundAction++
 
-  if (!table.b3 && target === "b3") {
-    table.b3 = onSelectCard.value;
-    table.bcards = table.bcards.filter(
-      (item) => item.id !== onSelectCard.value?.id,
-    );
-    onSelectCard.value = undefined;
-    cycle.action = false;
-  }
+      if (table.a1?.name === 'Raptor') {
+        table.a1 = external().phortem_fervent()
+      }
+      if (table.a2?.name === 'Raptor') {
+        table.a2 = external().phortem_fervent()
+      }
+      if (table.a3?.name === 'Raptor') {
+        table.a3 = external().phortem_fervent()
+      }
+      if (table.a4?.name === 'Raptor') {
+        table.a4 = external().phortem_fervent()
+      }
 
-  if (!table.b4 && target === "b4") {
-    table.b4 = onSelectCard.value;
-    table.bcards = table.bcards.filter(
-      (item) => item.id !== onSelectCard.value?.id,
-    );
-    onSelectCard.value = undefined;
-    cycle.action = false;
-  }
-};
-
-const botAction = () => {
-  // TODO: Valv, V Imutavel action
-  const target = random(["a1", "a2", "a3", "a4"]);
-  const card = random(table.acards) as Card;
-
-  if (table.amain?.name === "V Xwyyyw" && table.amain.extra.points > 3) {
-    table.blife -= Number((table.amain.extra.points / 2).toFixed(0));
-    table.amain.extra.points = 0;
-  }
-
-  if (table.a1 && table.a1.name === 'Support Nekro' && table.a1.extra.supportNekroRounds >= 2) {
-    table.a1.extra.supportNekroRounds = 0;
-    table.alife += 2;
-  }
-  if (table.a2 && table.a2.name === 'Support Nekro' && table.a2.extra.supportNekroRounds >= 2) {
-    table.a2.extra.supportNekroRounds = 0;
-    table.alife += 2;
-  }
-  if (table.a3 && table.a3.name === 'Support Nekro' && table.a3.extra.supportNekroRounds >= 2) {
-    table.a3.extra.supportNekroRounds = 0;
-    table.alife += 2;
-  }
-  if (table.a4 && table.a4.name === 'Support Nekro' && table.a4.extra.supportNekroRounds >= 2) {
-    table.a4.extra.supportNekroRounds = 0;
-    table.alife += 2;
-  }
-
-  if (table.a1?.name === "Support Nekro") {
-    table.a1.extra.supportNekroRounds++;
-  } else if (table.a2?.name === "Support Nekro") {
-    table.a2.extra.supportNekroRounds++;
-  } else if (table.a3?.name === "Support Nekro") {
-    table.a3.extra.supportNekroRounds++;
-  } else if (table.a4?.name === "Support Nekro") {
-    table.a4.extra.supportNekroRounds++;
-  }
-
-  if (table.a1 && table.a2 && table.a3 && table.a4) return;
-
-  if (
-    (table.a1 && target === "a1") ||
-    (table.a2 && target === "a2") ||
-    (table.a3 && target === "a3" && table.a4 && target === "a4")
-  ) {
-    botAction();
-
-    return;
-  }
-
-  if (!card) return;
-
-  if (card?.name === "Empty Skeleton") {
-    let total = 1;
-    if (table.a1?.name === "Empty Skeleton" && target !== "a1") total++;
-    if (table.a2?.name === "Empty Skeleton" && target !== "a2") total++;
-    if (table.a3?.name === "Empty Skeleton" && target !== "a3") total++;
-    if (table.a4?.name === "Empty Skeleton" && target !== "a4") total++;
-
-    card.def =
-      total === 1 ? 1 : total === 2 ? 2 : total === 3 ? 4 : total === 4 ? 8 : 8;
-    card.atk =
-      total === 1 ? 1 : total === 2 ? 2 : total === 3 ? 4 : total === 4 ? 8 : 8;
-
-    if (table.a1?.name === "Empty Skeleton") {
-      table.a1.atk *= 2;
-      table.a1.def *= 2;
+      if (table.b1?.name === 'Raptor') {
+        table.b1 = external().phortem_fervent()
+      }
+      if (table.b2?.name === 'Raptor') {
+        table.b2 = external().phortem_fervent()
+      }
+      if (table.b3?.name === 'Raptor') {
+        table.b3 = external().phortem_fervent()
+      }
+      if (table.b4?.name === 'Raptor') {
+        table.b4 = external().phortem_fervent()
+      }
     }
-    if (table.a2?.name === "Empty Skeleton") {
-      table.a2.atk *= 2;
-      table.a2.def *= 2;
+
+    cycle.round++
+  }
+
+  const setSelectCardInDrop = (target: string) => {
+    if (!cycle.action) {
+      onSelectCard.value = undefined
+      return
     }
-    if (table.a3?.name === "Empty Skeleton") {
-      table.a3.atk *= 2;
-      table.a3.def *= 2;
+
+    if (cycle.roundSet === 'bot' || cycle.roundSet === 'combat') {
+      onSelectCard.value = undefined
+      return
     }
-    if (table.a4?.name === "Empty Skeleton") {
-      table.a4.atk *= 2;
-      table.a4.def *= 2;
+
+    if (onSelectCard.value && onSelectCard.value.name === 'Empty Skeleton') {
+      let total = 1
+      if (table.b1?.name === 'Empty Skeleton' && target !== 'b1') total++
+      if (table.b2?.name === 'Empty Skeleton' && target !== 'b2') total++
+      if (table.b3?.name === 'Empty Skeleton' && target !== 'b3') total++
+      if (table.b4?.name === 'Empty Skeleton' && target !== 'b4') total++
+
+      onSelectCard.value.def =
+        total === 1
+          ? 1
+          : total === 2
+            ? 2
+            : total === 3
+              ? 4
+              : total === 4
+                ? 8
+                : 8
+      onSelectCard.value.atk =
+        total === 1
+          ? 1
+          : total === 2
+            ? 2
+            : total === 3
+              ? 4
+              : total === 4
+                ? 8
+                : 8
+
+      if (table.b1?.name === 'Empty Skeleton') {
+        table.b1.atk *= 2
+        table.b1.def *= 2
+      }
+      if (table.b2?.name === 'Empty Skeleton') {
+        table.b2.atk *= 2
+        table.b2.def *= 2
+      }
+      if (table.b3?.name === 'Empty Skeleton') {
+        table.b3.atk *= 2
+        table.b3.def *= 2
+      }
+      if (table.b4?.name === 'Empty Skeleton') {
+        table.b4.atk *= 2
+        table.b4.def *= 2
+      }
+    }
+
+    if (!table.b1 && target === 'b1') {
+      table.b1 = onSelectCard.value
+      table.bcards = table.bcards.filter(
+        (item) => item.id !== onSelectCard.value?.id,
+      )
+      onSelectCard.value = undefined
+      cycle.action = false
+    }
+
+    if (!table.b2 && target === 'b2') {
+      table.b2 = onSelectCard.value
+      table.bcards = table.bcards.filter(
+        (item) => item.id !== onSelectCard.value?.id,
+      )
+      onSelectCard.value = undefined
+      cycle.action = false
+    }
+
+    if (!table.b3 && target === 'b3') {
+      table.b3 = onSelectCard.value
+      table.bcards = table.bcards.filter(
+        (item) => item.id !== onSelectCard.value?.id,
+      )
+      onSelectCard.value = undefined
+      cycle.action = false
+    }
+
+    if (!table.b4 && target === 'b4') {
+      table.b4 = onSelectCard.value
+      table.bcards = table.bcards.filter(
+        (item) => item.id !== onSelectCard.value?.id,
+      )
+      onSelectCard.value = undefined
+      cycle.action = false
     }
   }
 
-  if (!table.a1 && target === "a1") {
-    table.a1 = card;
-    table.acards = table.acards.filter((item) => item.id !== card.id);
-  }
+  const botAction = () => {
+    // TODO: Valv, V Imutavel action
+    const target = random(['a1', 'a2', 'a3', 'a4'])
+    const card = random(table.acards) as Card
 
-  if (!table.a2 && target === "a2") {
-    table.a2 = card;
-    table.acards = table.acards.filter((item) => item.id !== card.id);
-  }
-
-  if (!table.a3 && target === "a3") {
-    table.a3 = card;
-    table.acards = table.acards.filter((item) => item.id !== card.id);
-  }
-
-  if (!table.a4 && target === "a4") {
-    table.a4 = card;
-    table.acards = table.acards.filter((item) => item.id !== card.id);
-  }
-};
-
-const combatRunner = () => {
-  if (table.a1 && table.b1) {
-    if (table.a1.atk === table.b1.atk && table.a1.def === table.b1.def) {
-      table.b1 = undefined;
-      table.a1 = undefined;
-      if (table.amain?.name === "V Xwyyyw") table.amain.extra.points++;
-      if (table.bmain?.name === "V Xwyyyw") table.bmain.extra.points++;
-    } else if (table.a1.atk >= table.b1.def) {
-      // TODO: run else if in one side
-      table.b1 = undefined;
-      if (table.amain?.name === "V Xwyyyw") table.amain.extra.points++;
-    } else if (table.b1.atk >= table.a1.def) {
-      table.a1 = undefined;
-      if (table.bmain?.name === "V Xwyyyw") table.bmain.extra.points++;
-    } else {
-      table.a1.def -= table.b1.atk;
-      table.b1.def -= table.a1.atk;
+    if (table.amain?.name === 'V Xwyyyw' && table.amain.extra.points > 3) {
+      table.blife -= Number((table.amain.extra.points / 2).toFixed(0))
+      table.amain.extra.points = 0
     }
-  } else if (table.a1 && !table.b1) {
-    table.blife -= table.a1.atk;
-    if (table.a1.atk >= 3 && table.bmain?.name === "Colos") table.blife++;
-  } else if (table.b1 && !table.a1) {
-    table.alife -= table.b1.atk;
-    if (table.b1.atk >= 3 && table.amain?.name === "Colos") table.alife++;
+
+    if (
+      table.a1 &&
+      table.a1.name === 'Support Nekro' &&
+      table.a1.extra.supportNekroRounds >= 2
+    ) {
+      table.a1.extra.supportNekroRounds = 0
+      table.alife += 2
+    }
+    if (
+      table.a2 &&
+      table.a2.name === 'Support Nekro' &&
+      table.a2.extra.supportNekroRounds >= 2
+    ) {
+      table.a2.extra.supportNekroRounds = 0
+      table.alife += 2
+    }
+    if (
+      table.a3 &&
+      table.a3.name === 'Support Nekro' &&
+      table.a3.extra.supportNekroRounds >= 2
+    ) {
+      table.a3.extra.supportNekroRounds = 0
+      table.alife += 2
+    }
+    if (
+      table.a4 &&
+      table.a4.name === 'Support Nekro' &&
+      table.a4.extra.supportNekroRounds >= 2
+    ) {
+      table.a4.extra.supportNekroRounds = 0
+      table.alife += 2
+    }
+
+    if (table.a1?.name === 'Support Nekro') {
+      table.a1.extra.supportNekroRounds++
+    } else if (table.a2?.name === 'Support Nekro') {
+      table.a2.extra.supportNekroRounds++
+    } else if (table.a3?.name === 'Support Nekro') {
+      table.a3.extra.supportNekroRounds++
+    } else if (table.a4?.name === 'Support Nekro') {
+      table.a4.extra.supportNekroRounds++
+    }
+
+    if (table.a1 && table.a2 && table.a3 && table.a4) return
+
+    if (
+      (table.a1 && target === 'a1') ||
+      (table.a2 && target === 'a2') ||
+      (table.a3 && target === 'a3' && table.a4 && target === 'a4')
+    ) {
+      botAction()
+
+      return
+    }
+
+    if (!card) return
+
+    if (card?.name === 'Empty Skeleton') {
+      let total = 1
+      if (table.a1?.name === 'Empty Skeleton' && target !== 'a1') total++
+      if (table.a2?.name === 'Empty Skeleton' && target !== 'a2') total++
+      if (table.a3?.name === 'Empty Skeleton' && target !== 'a3') total++
+      if (table.a4?.name === 'Empty Skeleton' && target !== 'a4') total++
+
+      card.def =
+        total === 1
+          ? 1
+          : total === 2
+            ? 2
+            : total === 3
+              ? 4
+              : total === 4
+                ? 8
+                : 8
+      card.atk =
+        total === 1
+          ? 1
+          : total === 2
+            ? 2
+            : total === 3
+              ? 4
+              : total === 4
+                ? 8
+                : 8
+
+      if (table.a1?.name === 'Empty Skeleton') {
+        table.a1.atk *= 2
+        table.a1.def *= 2
+      }
+      if (table.a2?.name === 'Empty Skeleton') {
+        table.a2.atk *= 2
+        table.a2.def *= 2
+      }
+      if (table.a3?.name === 'Empty Skeleton') {
+        table.a3.atk *= 2
+        table.a3.def *= 2
+      }
+      if (table.a4?.name === 'Empty Skeleton') {
+        table.a4.atk *= 2
+        table.a4.def *= 2
+      }
+    }
+
+    if (!table.a1 && target === 'a1') {
+      table.a1 = card
+      table.acards = table.acards.filter((item) => item.id !== card.id)
+    }
+
+    if (!table.a2 && target === 'a2') {
+      table.a2 = card
+      table.acards = table.acards.filter((item) => item.id !== card.id)
+    }
+
+    if (!table.a3 && target === 'a3') {
+      table.a3 = card
+      table.acards = table.acards.filter((item) => item.id !== card.id)
+    }
+
+    if (!table.a4 && target === 'a4') {
+      table.a4 = card
+      table.acards = table.acards.filter((item) => item.id !== card.id)
+    }
   }
 
-  if (table.a2 && table.b2) {
-    if (table.a2.atk === table.b2.atk && table.a2.def === table.b2.def) {
-      table.b2 = undefined;
-      table.a2 = undefined;
-      if (table.amain?.name === "V Xwyyyw") table.amain.extra.points++;
-      if (table.bmain?.name === "V Xwyyyw") table.bmain.extra.points++;
-    } else if (table.a2.atk >= table.b2.def) {
-      table.b2 = undefined;
-      if (table.amain?.name === "V Xwyyyw") table.amain.extra.points++;
-    } else if (table.b2.atk >= table.a2.def) {
-      table.a2 = undefined;
-      if (table.bmain?.name === "V Xwyyyw") table.bmain.extra.points++;
-    } else {
-      table.a2.def -= table.b2.atk;
-      table.b2.def -= table.a2.atk;
+  const combatRunner = () => {
+    if (table.a1 && table.b1) {
+      if (table.a1.atk === table.b1.atk && table.a1.def === table.b1.def) {
+        table.b1 = undefined
+        table.a1 = undefined
+        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+      } else if (table.a1.atk >= table.b1.def) {
+        // TODO: run else if in one side
+        table.b1 = undefined
+        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+      } else if (table.b1.atk >= table.a1.def) {
+        table.a1 = undefined
+        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+      } else {
+        table.a1.def -= table.b1.atk
+        table.b1.def -= table.a1.atk
+      }
+    } else if (table.a1 && !table.b1) {
+      table.blife -= table.a1.atk
+      if (table.a1.atk >= 3 && table.bmain?.name === 'Colos') table.blife++
+    } else if (table.b1 && !table.a1) {
+      table.alife -= table.b1.atk
+      if (table.b1.atk >= 3 && table.amain?.name === 'Colos') table.alife++
     }
-  } else if (table.a2 && !table.b2) {
-    table.blife -= table.a2.atk;
-    if (table.a2.atk >= 3 && table.bmain?.name === "Colos") table.blife++;
-  } else if (table.b2 && !table.a2) {
-    table.alife -= table.b2.atk;
-    if (table.b2.atk >= 3 && table.amain?.name === "Colos") table.alife++;
-  }
 
-  if (table.a3 && table.b3) {
-    if (table.a3.atk === table.b3.atk && table.a3.def === table.b3.def) {
-      table.b3 = undefined;
-      table.a3 = undefined;
-      if (table.amain?.name === "V Xwyyyw") table.amain.extra.points++;
-      if (table.bmain?.name === "V Xwyyyw") table.bmain.extra.points++;
-    } else if (table.a3.atk >= table.b3.def) {
-      table.b3 = undefined;
-      if (table.amain?.name === "V Xwyyyw") table.amain.extra.points++;
-    } else if (table.b3.atk >= table.a3.def) {
-      table.a3 = undefined;
-      if (table.bmain?.name === "V Xwyyyw") table.bmain.extra.points++;
-    } else {
-      table.a3.def -= table.b3.atk;
-      table.b3.def -= table.a3.atk;
+    if (table.a2 && table.b2) {
+      if (table.a2.atk === table.b2.atk && table.a2.def === table.b2.def) {
+        table.b2 = undefined
+        table.a2 = undefined
+        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+      } else if (table.a2.atk >= table.b2.def) {
+        table.b2 = undefined
+        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+      } else if (table.b2.atk >= table.a2.def) {
+        table.a2 = undefined
+        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+      } else {
+        table.a2.def -= table.b2.atk
+        table.b2.def -= table.a2.atk
+      }
+    } else if (table.a2 && !table.b2) {
+      table.blife -= table.a2.atk
+      if (table.a2.atk >= 3 && table.bmain?.name === 'Colos') table.blife++
+    } else if (table.b2 && !table.a2) {
+      table.alife -= table.b2.atk
+      if (table.b2.atk >= 3 && table.amain?.name === 'Colos') table.alife++
     }
-  } else if (table.a3 && !table.b3) {
-    table.blife -= table.a3.atk;
-    if (table.a3.atk >= 3 && table.bmain?.name === "Colos") table.blife++;
-  } else if (table.b3 && !table.a3) {
-    table.alife -= table.b3.atk;
-    if (table.b3.atk >= 3 && table.amain?.name === "Colos") table.alife++;
-  }
 
-  if (table.a4 && table.b4) {
-    if (table.a4.atk === table.b4.atk && table.a4.def === table.b4.def) {
-      table.b4 = undefined;
-      table.a4 = undefined;
-      if (table.amain?.name === "V Xwyyyw") table.amain.extra.points++;
-      if (table.bmain?.name === "V Xwyyyw") table.bmain.extra.points++;
-    } else if (table.a4.atk >= table.b4.def) {
-      table.b4 = undefined;
-      if (table.amain?.name === "V Xwyyyw") table.amain.extra.points++;
-    } else if (table.b4.atk >= table.a4.def) {
-      table.a4 = undefined;
-      if (table.bmain?.name === "V Xwyyyw") table.bmain.extra.points++;
-    } else {
-      table.a4.def -= table.b4.atk;
-      table.b4.def -= table.a4.atk;
+    if (table.a3 && table.b3) {
+      if (table.a3.atk === table.b3.atk && table.a3.def === table.b3.def) {
+        table.b3 = undefined
+        table.a3 = undefined
+        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+      } else if (table.a3.atk >= table.b3.def) {
+        table.b3 = undefined
+        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+      } else if (table.b3.atk >= table.a3.def) {
+        table.a3 = undefined
+        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+      } else {
+        table.a3.def -= table.b3.atk
+        table.b3.def -= table.a3.atk
+      }
+    } else if (table.a3 && !table.b3) {
+      table.blife -= table.a3.atk
+      if (table.a3.atk >= 3 && table.bmain?.name === 'Colos') table.blife++
+    } else if (table.b3 && !table.a3) {
+      table.alife -= table.b3.atk
+      if (table.b3.atk >= 3 && table.amain?.name === 'Colos') table.alife++
     }
-  } else if (table.a4 && !table.b4) {
-    table.blife -= table.a4.atk;
-    if (table.a4.atk >= 3 && table.bmain?.name === "Colos") table.blife++;
-  } else if (table.b4 && !table.a4) {
-    table.alife -= table.b4.atk;
-    if (table.b4.atk >= 3 && table.amain?.name === "Colos") table.alife++;
+
+    if (table.a4 && table.b4) {
+      if (table.a4.atk === table.b4.atk && table.a4.def === table.b4.def) {
+        table.b4 = undefined
+        table.a4 = undefined
+        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+      } else if (table.a4.atk >= table.b4.def) {
+        table.b4 = undefined
+        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+      } else if (table.b4.atk >= table.a4.def) {
+        table.a4 = undefined
+        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+      } else {
+        table.a4.def -= table.b4.atk
+        table.b4.def -= table.a4.atk
+      }
+    } else if (table.a4 && !table.b4) {
+      table.blife -= table.a4.atk
+      if (table.a4.atk >= 3 && table.bmain?.name === 'Colos') table.blife++
+    } else if (table.b4 && !table.a4) {
+      table.alife -= table.b4.atk
+      if (table.b4.atk >= 3 && table.amain?.name === 'Colos') table.alife++
+    }
   }
-};
 </script>

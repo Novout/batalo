@@ -19,11 +19,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Card, Maybe } from "../../types";
+  import type { Card, Maybe } from '../../types'
 
-const props = defineProps<{
-  content: Maybe<Card>;
-}>();
+  const props = defineProps<{
+    content: Maybe<Card>
+  }>()
 
-const emit = defineEmits(["select"]);
+  const emit = defineEmits(['select'])
 </script>

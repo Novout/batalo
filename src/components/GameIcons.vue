@@ -9,9 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Icon } from "../types";
+  import type { Icon } from '../types'
 
-const props = defineProps<{
-  icon: Icon;
-}>();
+  const props = defineProps<{
+    icon: Icon
+  }>()
 </script>

@@ -11,7 +11,7 @@ body {
   outline: 0;
   overflow-y: hidden;
   overflow-x: hidden;
-  font-family: "Poppins", "Courier New", Courier, monospace;
+  font-family: 'Poppins', 'Courier New', Courier, monospace;
 }
 
 ::-webkit-scrollbar {

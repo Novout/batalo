@@ -1,7 +1,7 @@
 export default {
   menu: {
-    playerDeck: "Player Deck",
-    botDeck: "Bot Deck",
-    start: "Start",
+    playerDeck: 'Player Deck',
+    botDeck: 'Bot Deck',
+    start: 'Start',
   },
-};
+}
