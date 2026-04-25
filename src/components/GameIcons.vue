@@ -17,6 +17,7 @@
   <IconGroup v-else-if="props.icon === 'group'" class="h-20 w-20" />
   <IconGroupShadow v-else-if="props.icon === 'shadow'" class="h-20 w-20" />
   <IconRegroup v-else-if="props.icon === 'regroup'" class="h-20 w-20" />
+  <IconLion v-else-if="props.icon === 'lion'" class="h-20 w-20" />
   <p v-else></p>
 </template>
 

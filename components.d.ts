@@ -27,6 +27,7 @@ declare module 'vue' {
     IconGroup: typeof import('./src/components/icons/IconGroup.vue')['default']
     IconGroupShadow: typeof import('./src/components/icons/IconGroupShadow.vue')['default']
     IconHeart: typeof import('./src/components/icons/IconHeart.vue')['default']
+    IconLion: typeof import('./src/components/icons/IconLion.vue')['default']
     IconMask: typeof import('./src/components/icons/IconMask.vue')['default']
     IconMask2: typeof import('./src/components/icons/IconMask2.vue')['default']
     IconMelankolio: typeof import('./src/components/icons/IconMelankolio.vue')['default']

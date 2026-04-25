@@ -286,6 +286,17 @@ export const thorinemCards = (): Card[] => {
     def: 5,
   } as Card
 
+  const faded = {
+    name: 'Faded',
+    icon: 'lion',
+    max: 1,
+    description: 'Upon entering, it deals one damage to all enemy units on the field.',
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 4,
+    def: 6,
+  } as Card
+
   rawCards.push(last_tree)
   rawCards.push(support_nekro)
   rawCards.push(atashar)
@@ -294,6 +305,7 @@ export const thorinemCards = (): Card[] => {
   rawCards.push(relicter)
   rawCards.push(calino)
   rawCards.push(faztaylhi)
+  rawCards.push(faded)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

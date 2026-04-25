@@ -476,6 +476,7 @@
     const isLastTree = card.name === 'Last Tree'
     const isSair = card.name === "Sair's Lackeys"
     const isFaztaylhi = card.name === 'Faztaylhi'
+    const isFaded = card.name === 'Faded'
 
     if (isZaytek) {
       if (table.a1) card.def++
@@ -507,6 +508,24 @@
         const card2 = table.bdeck.pop()
         if (card2) table.bcards.push(card2)
       }
+      if (isFaded) {
+        if (table.a1) {
+          table.a1.def -= 1
+          if (table.a1.def <= 0) table.a1 = undefined
+        }
+        if (table.a2) {
+          table.a2.def -= 1
+          if (table.a2.def <= 0) table.a2 = undefined
+        }
+        if (table.a3) {
+          table.a3.def -= 1
+          if (table.a3.def <= 0) table.a3 = undefined
+        }
+        if (table.a4) {
+          table.a4.def -= 1
+          if (table.a4.def <= 0) table.a4 = undefined
+        }
+      }
     }
 
     if (!table.b2 && target === 'b2') {
@@ -521,6 +540,24 @@
       if (isSair) {
         table.acards.shift()
         table.acards.shift()
+      }
+      if (isFaded) {
+        if (table.a1) {
+          table.a1.def -= 1
+          if (table.a1.def <= 0) table.a1 = undefined
+        }
+        if (table.a2) {
+          table.a2.def -= 1
+          if (table.a2.def <= 0) table.a2 = undefined
+        }
+        if (table.a3) {
+          table.a3.def -= 1
+          if (table.a3.def <= 0) table.a3 = undefined
+        }
+        if (table.a4) {
+          table.a4.def -= 1
+          if (table.a4.def <= 0) table.a4 = undefined
+        }
       }
     }
 
@@ -537,6 +574,24 @@
         table.acards.shift()
         table.acards.shift()
       }
+      if (isFaded) {
+        if (table.a1) {
+          table.a1.def -= 1
+          if (table.a1.def <= 0) table.a1 = undefined
+        }
+        if (table.a2) {
+          table.a2.def -= 1
+          if (table.a2.def <= 0) table.a2 = undefined
+        }
+        if (table.a3) {
+          table.a3.def -= 1
+          if (table.a3.def <= 0) table.a3 = undefined
+        }
+        if (table.a4) {
+          table.a4.def -= 1
+          if (table.a4.def <= 0) table.a4 = undefined
+        }
+      }
     }
 
     if (!table.b4 && target === 'b4') {
@@ -551,6 +606,24 @@
       if (isSair) {
         table.acards.shift()
         table.acards.shift()
+      }
+      if (isFaded) {
+        if (table.a1) {
+          table.a1.def -= 1
+          if (table.a1.def <= 0) table.a1 = undefined
+        }
+        if (table.a2) {
+          table.a2.def -= 1
+          if (table.a2.def <= 0) table.a2 = undefined
+        }
+        if (table.a3) {
+          table.a3.def -= 1
+          if (table.a3.def <= 0) table.a3 = undefined
+        }
+        if (table.a4) {
+          table.a4.def -= 1
+          if (table.a4.def <= 0) table.a4 = undefined
+        }
       }
     }
   }
@@ -710,6 +783,24 @@
         if (card1) table.acards.push(card1)
         const card2 = table.adeck.pop()
         if (card2) table.acards.push(card2)
+      }
+      if (card.name === 'Faded') {
+        if (table.b1) {
+          table.b1.def -= 1
+          if (table.b1.def <= 0) table.b1 = undefined
+        }
+        if (table.b2) {
+          table.b2.def -= 1
+          if (table.b2.def <= 0) table.b2 = undefined
+        }
+        if (table.b3) {
+          table.b3.def -= 1
+          if (table.b3.def <= 0) table.b3 = undefined
+        }
+        if (table.b4) {
+          table.b4.def -= 1
+          if (table.b4.def <= 0) table.b4 = undefined
+        }
       }
     }
 
