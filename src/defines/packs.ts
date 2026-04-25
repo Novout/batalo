@@ -37,7 +37,7 @@ export const champtions = (type: 'gyni' | 'thorinem' | 'letesno'): Card => {
       }
     : {
         name: 'Colos',
-        description: `When you suffer 3 or more Life Points this turn, inflict 1 damage to any enemy card on the field.`,
+        description: `When you suffer 3 or more Hit Points this turn, gain 1 Life Point.`,
         textColor: 'white',
         backgroundColor: 'green',
         atk: 0,
