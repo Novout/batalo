@@ -386,8 +386,8 @@ export const rouanirCards = (): Card[] => {
     description: '',
     textColor: 'black',
     backgroundColor: 'yellow',
-    atk: 5,
-    def: 4,
+    atk: 4,
+    def: 6,
     skills: {},
   } as Card
 
@@ -403,11 +403,37 @@ export const rouanirCards = (): Card[] => {
     skills: {},
   } as Card
 
+  const adrino = {
+    name: 'Adrino',
+    icon: 'mage',
+    max: 2,
+    description: '',
+    textColor: 'black',
+    backgroundColor: 'yellow',
+    atk: 4,
+    def: 1,
+    skills: {},
+  } as Card
+
+  const big = {
+    name: 'Big Effect',
+    icon: 'support',
+    max: 2,
+    description: 'Gain one attack point for each card on the field.',
+    textColor: 'black',
+    backgroundColor: 'yellow',
+    atk: 1,
+    def: 3,
+    skills: {},
+  } as Card
+
   rawCards.push(batanto)
   rawCards.push(drezor)
   rawCards.push(tarr)
   rawCards.push(haino)
   rawCards.push(forone)
+  rawCards.push(adrino)
+  rawCards.push(big)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

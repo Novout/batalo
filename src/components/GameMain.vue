@@ -520,12 +520,24 @@
     const isBatanto = card.name === 'Batanto'
     const isTarrAdel = card.name === 'Tarr Adél'
     const isForone = card.name === 'Forone'
+    const isBigEffect = card.name === 'Big Effect'
 
     if (isZaytek) {
       if (table.a1) card.def++
       if (table.a2) card.def++
       if (table.a3) card.def++
       if (table.a4) card.def++
+    }
+
+    if (isBigEffect) {
+      if (table.b1) card.atk++
+      if (table.b2) card.atk++
+      if (table.b3) card.atk++
+      if (table.b4) card.atk++
+      if (table.a1) card.atk++
+      if (table.a2) card.atk++
+      if (table.a3) card.atk++
+      if (table.a4) card.atk++
     }
 
     if (isForone) {
@@ -744,12 +756,24 @@
     const isZaytek = card.name === 'Zaytek'
     const isTarrAdel = card.name === 'Tarr Adél'
     const isForone = card.name === 'Forone'
+    const isBigEffect = card.name === 'Big Effect'
 
     if (isZaytek) {
       if (table.b1) card.def++
       if (table.b2) card.def++
       if (table.b3) card.def++
       if (table.b4) card.def++
+    }
+
+    if (isBigEffect) {
+      if (table.b1) card.atk++
+      if (table.b2) card.atk++
+      if (table.b3) card.atk++
+      if (table.b4) card.atk++
+      if (table.a1) card.atk++
+      if (table.a2) card.atk++
+      if (table.a3) card.atk++
+      if (table.a4) card.atk++
     }
 
     if (isForone) {
