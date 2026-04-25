@@ -13,6 +13,8 @@ export type Icon =
   | 'smoke'
   | 'fly'
   | 'tree'
+  | 'totem'
+  | 'dragon'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -28,6 +30,8 @@ export type CardName =
   | 'Zaytek'
   | 'Vyyxxv'
   | 'Last Tree'
+  | 'Atashar'
+  | 'Hidralon Telono'
 
 export interface Card {
   id?: string
@@ -42,6 +46,7 @@ export interface Card {
   extra: any
   skills: {
     fly?: boolean
+    totem?: number
   }
 }
 

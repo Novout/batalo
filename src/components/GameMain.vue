@@ -68,7 +68,14 @@
         </div>
       </div>
       <div class="flex gap-25 w-full justify-center items-center">
-        <div :class="[cycle.action > 0 ? 'border-t-6 border-l-0 border-r-0 border-b-0 border-green border-solid' : '']" class="flex gap-2">
+        <div
+          :class="[
+            cycle.action > 0
+              ? 'border-t-6 border-l-0 border-r-0 border-b-0 border-green border-solid'
+              : '',
+          ]"
+          class="flex gap-2"
+        >
           <GameCardHand
             v-for="(card, index) in table.bcards"
             :key="index"
@@ -131,6 +138,7 @@
   const table = reactive({
     amain: undefined as Maybe<CardChampion>,
     alife: 12,
+    atotem: 0,
     a1: undefined as Maybe<Card>,
     a2: undefined as Maybe<Card>,
     a3: undefined as Maybe<Card>,
@@ -140,6 +148,7 @@
     acemetery: [] as Card[],
     bmain: undefined as Maybe<CardChampion>,
     blife: 12,
+    btotem: 0,
     b1: undefined as Maybe<Card>,
     b2: undefined as Maybe<Card>,
     b3: undefined as Maybe<Card>,
@@ -214,6 +223,16 @@
         if (nextBotCard) table.acards.push(nextBotCard)
         const nextPlayerCard = table.bdeck.pop()
         if (nextPlayerCard) table.bcards.push(nextPlayerCard)
+
+        if (table.a1?.name === 'Atashar') table.atotem++
+        if (table.a2?.name === 'Atashar') table.atotem++
+        if (table.a3?.name === 'Atashar') table.atotem++
+        if (table.a4?.name === 'Atashar') table.atotem++
+
+        if (table.b1?.name === 'Atashar') table.btotem++
+        if (table.b2?.name === 'Atashar') table.btotem++
+        if (table.b3?.name === 'Atashar') table.btotem++
+        if (table.b4?.name === 'Atashar') table.btotem++
       }
 
       if (cycle.roundAction === 3) {
@@ -378,15 +397,28 @@
       }
     }
 
-    const isYlheiry = onSelectCard.value?.name === 'Ylheiry'
-    const isZaytek = onSelectCard.value?.name === 'Zaytek'
-    const isLastTree = onSelectCard.value?.name === 'Last Tree'
+    let card = onSelectCard.value as Card
+
+    if (
+      table.btotem > 0 &&
+      (table.b1?.name === 'Atashar' ||
+        table.b2?.name === 'Atashar' ||
+        table.b3?.name === 'Atashar' ||
+        table.b4?.name === 'Atashar')
+    ) {
+      card.def += table.btotem
+      table.btotem = 0
+    }
+
+    const isYlheiry = card.name === 'Ylheiry'
+    const isZaytek = card.name === 'Zaytek'
+    const isLastTree = card.name === 'Last Tree'
 
     if (isZaytek) {
-      if (table.a1) onSelectCard.value!.def++
-      if (table.a2) onSelectCard.value!.def++
-      if (table.a3) onSelectCard.value!.def++
-      if (table.a4) onSelectCard.value!.def++
+      if (table.a1) card.def++
+      if (table.a2) card.def++
+      if (table.a3) card.def++
+      if (table.a4) card.def++
     }
 
     if (isLastTree) {
@@ -394,7 +426,7 @@
     }
 
     if (!table.b1 && target === 'b1') {
-      table.b1 = onSelectCard.value
+      table.b1 = card
       table.bcards = table.bcards.filter(
         (item) => item.id !== onSelectCard.value?.id,
       )
@@ -405,7 +437,7 @@
     }
 
     if (!table.b2 && target === 'b2') {
-      table.b2 = onSelectCard.value
+      table.b2 = card
       table.bcards = table.bcards.filter(
         (item) => item.id !== onSelectCard.value?.id,
       )
@@ -416,7 +448,7 @@
     }
 
     if (!table.b3 && target === 'b3') {
-      table.b3 = onSelectCard.value
+      table.b3 = card
       table.bcards = table.bcards.filter(
         (item) => item.id !== onSelectCard.value?.id,
       )
@@ -427,7 +459,7 @@
     }
 
     if (!table.b4 && target === 'b4') {
-      table.b4 = onSelectCard.value
+      table.b4 = card
       table.bcards = table.bcards.filter(
         (item) => item.id !== onSelectCard.value?.id,
       )
@@ -450,6 +482,17 @@
       if (table.b2) card.def++
       if (table.b3) card.def++
       if (table.b4) card.def++
+    }
+
+    if (
+      table.atotem > 0 &&
+      (table.a1?.name === 'Atashar' ||
+        table.a2?.name === 'Atashar' ||
+        table.a3?.name === 'Atashar' ||
+        table.a4?.name === 'Atashar')
+    ) {
+      card.def += table.atotem
+      table.atotem = 0
     }
 
     if (table.amain?.name === 'V Xwyyyw' && table.amain.extra.points > 3) {

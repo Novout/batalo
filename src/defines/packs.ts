@@ -208,8 +208,35 @@ export const thorinemCards = (): Card[] => {
     skills: {},
   } as Card
 
+  const atashar = {
+    name: 'Atashar',
+    icon: 'totem',
+    max: 2,
+    description:
+      'Each round of combat, gain +1. The next card that enters the field gains that count.',
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 0,
+    def: 5,
+    skills: {},
+  } as Card
+
+  const hidralon_telono = {
+    name: 'Hidralon Telono',
+    icon: 'dragon',
+    max: 2,
+    description: '',
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 3,
+    def: 3,
+    skills: {},
+  } as Card
+
   rawCards.push(last_tree)
   rawCards.push(support_nekro)
+  rawCards.push(atashar)
+  rawCards.push(hidralon_telono)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {
