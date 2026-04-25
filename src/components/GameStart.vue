@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
   import { useOptionsStore } from '../store/options'
-import { useEnv } from '../use/env';
+  import { useEnv } from '../use/env'
 
   const emit = defineEmits(['start'])
 

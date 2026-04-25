@@ -2,9 +2,16 @@ import { defineConfig } from 'vite'
 import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
 import vue from '@vitejs/plugin-vue'
-import version from 'vite-plugin-package-version';
+import version from 'vite-plugin-package-version'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), UnoCSS(), Components({ dts: true }), version()],
+  plugins: [
+    vue(),
+    UnoCSS(),
+    Components({ dts: true }),
+    version(),
+    VitePWA({ registerType: 'autoUpdate' }),
+  ],
 })

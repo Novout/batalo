@@ -382,10 +382,10 @@
     const isZaytek = onSelectCard.value?.name === 'Zaytek'
 
     if (isZaytek) {
-      if(table.a1) onSelectCard.value!.def++
-      if(table.a2) onSelectCard.value!.def++
-      if(table.a3) onSelectCard.value!.def++
-      if(table.a4) onSelectCard.value!.def++
+      if (table.a1) onSelectCard.value!.def++
+      if (table.a2) onSelectCard.value!.def++
+      if (table.a3) onSelectCard.value!.def++
+      if (table.a4) onSelectCard.value!.def++
     }
 
     if (!table.b1 && target === 'b1') {
@@ -441,10 +441,10 @@
     const isZaytek = card.name === 'Zaytek'
 
     if (isZaytek) {
-      if(table.b1) card.def++
-      if(table.b2) card.def++
-      if(table.b3) card.def++
-      if(table.b4) card.def++
+      if (table.b1) card.def++
+      if (table.b2) card.def++
+      if (table.b3) card.def++
+      if (table.b4) card.def++
     }
 
     if (table.amain?.name === 'V Xwyyyw' && table.amain.extra.points > 3) {

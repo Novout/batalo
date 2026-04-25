@@ -11,15 +11,11 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    copy: typeof import('./src/components/cards/GameCardMain copy.vue')['default']
-    GameCard: typeof import('./src/components/cards/GameCard.vue')['default']
     GameCardHand: typeof import('./src/components/cards/GameCardHand.vue')['default']
     GameCardMain: typeof import('./src/components/cards/GameCardMain.vue')['default']
     GameCardMaster: typeof import('./src/components/cards/GameCardMaster.vue')['default']
-    GameCardOut: typeof import('./src/components/cards/GameCardOut.vue')['default']
     GameIcons: typeof import('./src/components/GameIcons.vue')['default']
     GameMain: typeof import('./src/components/GameMain.vue')['default']
-    GameSet: typeof import('./src/components/GameSet.vue')['default']
     GameStart: typeof import('./src/components/GameStart.vue')['default']
     IconAttack: typeof import('./src/components/icons/IconAttack.vue')['default']
     IconBear: typeof import('./src/components/icons/IconBear.vue')['default']

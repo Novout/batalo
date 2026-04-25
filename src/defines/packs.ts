@@ -126,7 +126,8 @@ export const gyniCards = (): Card[] => {
     name: 'Zaytek',
     icon: 'smoke',
     max: 2,
-    description: 'Upon entering the field, gain 1 additional HP for each enemy card on the field.',
+    description:
+      'Upon entering the field, gain 1 additional HP for each enemy card on the field.',
     textColor: 'white',
     backgroundColor: 'blue',
     atk: 3,
