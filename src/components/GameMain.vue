@@ -910,6 +910,7 @@
   const onReset = () => {
     table.amain = undefined
     table.alife = 12
+    table.atotem = 0
     table.a1 = undefined
     table.a2 = undefined
     table.a3 = undefined
@@ -918,6 +919,7 @@
     table.acards = []
     table.bmain = undefined
     table.blife = 12
+    table.btotem = 0
     table.b1 = undefined
     table.b2 = undefined
     table.b3 = undefined
