@@ -145,7 +145,7 @@
     roundSet: 'player' as 'player' | 'bot' | 'combat',
     round: 1,
     roundAction: 0,
-    action: true,
+    action: 1,
   })
 
   watch(
@@ -206,7 +206,7 @@
       } else if (round === 'player') {
         const nextCard = table.bdeck.pop()
         if (nextCard) table.bcards.push(nextCard)
-        cycle.action = true
+        cycle.action = 1
         cycle.roundAction++
 
         if (table.b1 && table.b1.extra?.supportNekroRounds >= 2) {
@@ -257,10 +257,10 @@
     else if (cycle.roundSet === 'combat') {
       cycle.roundSet = 'player'
 
-      if (table.b1?.name === 'Valv, V Imutavel') cycle.roundAction++
-      if (table.b2?.name === 'Valv, V Imutavel') cycle.roundAction++
-      if (table.b3?.name === 'Valv, V Imutavel') cycle.roundAction++
-      if (table.b4?.name === 'Valv, V Imutavel') cycle.roundAction++
+      if (table.b1?.name === 'Valv, V Immutable') cycle.action++
+      if (table.b2?.name === 'Valv, V Immutable') cycle.action++
+      if (table.b3?.name === 'Valv, V Immutable') cycle.action++
+      if (table.b4?.name === 'Valv, V Immutable') cycle.action++
 
       if (table.a1?.name === 'Raptor') {
         table.a1 = external().phortem_fervent()
@@ -355,7 +355,7 @@
         (item) => item.id !== onSelectCard.value?.id,
       )
       onSelectCard.value = undefined
-      cycle.action = false
+      cycle.action--
     }
 
     if (!table.b2 && target === 'b2') {
@@ -364,7 +364,7 @@
         (item) => item.id !== onSelectCard.value?.id,
       )
       onSelectCard.value = undefined
-      cycle.action = false
+      cycle.action--
     }
 
     if (!table.b3 && target === 'b3') {
@@ -373,7 +373,7 @@
         (item) => item.id !== onSelectCard.value?.id,
       )
       onSelectCard.value = undefined
-      cycle.action = false
+      cycle.action--
     }
 
     if (!table.b4 && target === 'b4') {
@@ -382,12 +382,12 @@
         (item) => item.id !== onSelectCard.value?.id,
       )
       onSelectCard.value = undefined
-      cycle.action = false
+      cycle.action--
     }
   }
 
   const botAction = () => {
-    // TODO: Valv, V Imutavel action
+    // TODO: Valv, V Immutable action
     const target = random(['a1', 'a2', 'a3', 'a4'])
     const card = random(table.acards) as Card
 
@@ -501,21 +501,53 @@
 
     if (!table.a1 && target === 'a1') {
       table.a1 = card
+      const desolate = table.bcards.find((card) => card.name === 'The Desolate')
+
+      if (table.a1.atk >= 4 && desolate) {
+        if (!table.b1) table.b1 = desolate
+        else if (!table.b2) table.b2 = desolate
+        else if (!table.b3) table.b3 = desolate
+        else if (!table.b4) table.b4 = desolate
+      }
       table.acards = table.acards.filter((item) => item.id !== card.id)
     }
 
     if (!table.a2 && target === 'a2') {
       table.a2 = card
+      const desolate = table.bcards.find((card) => card.name === 'The Desolate')
+
+      if (table.a2.atk >= 4 && desolate) {
+        if (!table.b1) table.b1 = desolate
+        else if (!table.b2) table.b2 = desolate
+        else if (!table.b3) table.b3 = desolate
+        else if (!table.b4) table.b4 = desolate
+      }
       table.acards = table.acards.filter((item) => item.id !== card.id)
     }
 
     if (!table.a3 && target === 'a3') {
       table.a3 = card
+      const desolate = table.bcards.find((card) => card.name === 'The Desolate')
+
+      if (table.a3.atk >= 4 && desolate) {
+        if (!table.b1) table.b1 = desolate
+        else if (!table.b2) table.b2 = desolate
+        else if (!table.b3) table.b3 = desolate
+        else if (!table.b4) table.b4 = desolate
+      }
       table.acards = table.acards.filter((item) => item.id !== card.id)
     }
 
     if (!table.a4 && target === 'a4') {
       table.a4 = card
+      const desolate = table.bcards.find((card) => card.name === 'The Desolate')
+
+      if (table.a4.atk >= 4 && desolate) {
+        if (!table.b1) table.b1 = desolate
+        else if (!table.b2) table.b2 = desolate
+        else if (!table.b3) table.b3 = desolate
+        else if (!table.b4) table.b4 = desolate
+      }
       table.acards = table.acards.filter((item) => item.id !== card.id)
     }
   }

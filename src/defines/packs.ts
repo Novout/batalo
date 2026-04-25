@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 export const external = () => {
   const phortem_fervent = () => {
     return {
-      name: 'Phorthem Fervent',
+      name: 'Phortem Fervent',
       id: uuidv4(),
       icon: 'fervent',
       max: 0,
@@ -20,7 +20,7 @@ export const external = () => {
   return { phortem_fervent }
 }
 
-export const champtions = (type: 'gyni' | 'thorinem' | 'letesno') => {
+export const champtions = (type: 'gyni' | 'thorinem' | 'letesno'): Card => {
   return type === 'gyni'
     ? {
         name: 'V Xwyyyw',
@@ -66,7 +66,7 @@ export const gyniCards = (): Card[] => {
   const raptor = {
     name: 'Raptor',
     icon: 'raptor',
-    max: 2,
+    max: 3,
     description: 'After combat turn, this card is replaced by Phortem Fervent.',
     textColor: 'white',
     backgroundColor: 'blue',
@@ -75,9 +75,9 @@ export const gyniCards = (): Card[] => {
   } as Card
 
   const valv = {
-    name: 'Valv, V Imutavel',
+    name: 'Valv, V Immutable',
     icon: 'valv',
-    max: 5,
+    max: 2,
     description:
       'While the player remains on the field, they gain an extra action in the round.',
     textColor: 'white',
@@ -86,9 +86,22 @@ export const gyniCards = (): Card[] => {
     def: 2,
   } as Card
 
+  const desolate = {
+    name: 'The Desolate',
+    icon: 'desolate',
+    max: 2,
+    description:
+      'If the enemy plays a force of 4 or greater and has free space, this card enters the field.',
+    textColor: 'white',
+    backgroundColor: 'blue',
+    atk: 4,
+    def: 2,
+  } as Card
+
   rawCards.push(empty_skeletion1)
   rawCards.push(valv)
   rawCards.push(raptor)
+  rawCards.push(desolate)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

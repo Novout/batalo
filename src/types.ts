@@ -7,10 +7,21 @@ export type Icon =
   | 'raptor'
   | 'valv'
   | 'fervent'
+  | 'desolate'
+
+export type CardName =
+  | 'Phortem Fervent'
+  | 'V Xwyyyw'
+  | 'Colos'
+  | 'Empty Skeleton'
+  | 'Raptor'
+  | 'Valv, V Immutable'
+  | 'Support Nekro'
+  | 'The Desolate'
 
 export interface Card {
   id?: string
-  name: string
+  name: CardName
   max: number
   description: string
   backgroundColor: string
