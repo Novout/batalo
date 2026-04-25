@@ -14,6 +14,7 @@ export type Icon =
   | 'fly'
   | 'tree'
   | 'totem'
+  | 'totem2'
   | 'dragon'
 
 export type CardName =
@@ -46,7 +47,7 @@ export interface Card {
   extra: any
   skills: {
     fly?: boolean
-    totem?: number
+    totem?: boolean
   }
 }
 
