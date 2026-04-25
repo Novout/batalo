@@ -57,7 +57,7 @@ export const gyniCards = (): Card[] => {
   const empty_skeletion1 = {
     name: 'Empty Skeleton',
     icon: 'skeleton',
-    max: 5,
+    max: 7,
     description: 'Doubles the stats for each Empty Skeleton card on the field.',
     textColor: 'white',
     backgroundColor: 'blue',
@@ -69,7 +69,7 @@ export const gyniCards = (): Card[] => {
   const raptor = {
     name: 'Raptor',
     icon: 'raptor',
-    max: 3,
+    max: 4,
     description: 'After combat turn, this card is replaced by Phortem Fervent.',
     textColor: 'white',
     backgroundColor: 'blue',
@@ -81,7 +81,7 @@ export const gyniCards = (): Card[] => {
   const valv = {
     name: 'Valv, V Immutable',
     icon: 'valv',
-    max: 2,
+    max: 3,
     description:
       'While the player remains on the field, they gain an extra action in the round.',
     textColor: 'white',
@@ -94,7 +94,7 @@ export const gyniCards = (): Card[] => {
   const desolate = {
     name: 'The Desolate',
     icon: 'desolate',
-    max: 2,
+    max: 3,
     description:
       'If the enemy plays a force of 4 or greater and has free space, this card enters the field.',
     textColor: 'white',
@@ -184,7 +184,7 @@ export const thorinemCards = (): Card[] => {
   const support_nekro = {
     name: 'Support Nekro',
     icon: 'support',
-    max: 4,
+    max: 6,
     description: 'Add 2 life points every two turns.',
     textColor: 'white',
     backgroundColor: 'green',
@@ -199,7 +199,7 @@ export const thorinemCards = (): Card[] => {
   const last_tree = {
     name: 'Last Tree',
     icon: 'tree',
-    max: 3,
+    max: 4,
     description: 'Upon entering the field, grants an additional action.',
     textColor: 'white',
     backgroundColor: 'green',
@@ -211,7 +211,7 @@ export const thorinemCards = (): Card[] => {
   const atashar = {
     name: 'Atashar',
     icon: 'totem',
-    max: 2,
+    max: 3,
     description:
       'Each round of combat, gain +1. The next card that enters the field gains that count.',
     textColor: 'white',
@@ -226,7 +226,7 @@ export const thorinemCards = (): Card[] => {
   const hidralon_telono = {
     name: 'Hidralon Telono',
     icon: 'dragon',
-    max: 2,
+    max: 3,
     description: '',
     textColor: 'white',
     backgroundColor: 'green',
@@ -240,7 +240,7 @@ export const thorinemCards = (): Card[] => {
   const sair = {
     name: "Sair's Lackeys",
     icon: 'group',
-    max: 2,
+    max: 3,
     description:
       "Upon entering the field, delete two cards from the opponent's hand.",
     textColor: 'white',
@@ -252,7 +252,7 @@ export const thorinemCards = (): Card[] => {
   const relicter = {
     name: 'Relicter',
     icon: 'shadow',
-    max: 2,
+    max: 3,
     description:
       'If it survives more than two turns of combat on the field, a copy of Seto enters the game.',
     textColor: 'white',
@@ -267,7 +267,7 @@ export const thorinemCards = (): Card[] => {
   const calino = {
     name: 'Calino',
     icon: 'fervent',
-    max: 2,
+    max: 3,
     description: "It can directly attack the opponent's Life Points.",
     textColor: 'white',
     backgroundColor: 'green',
