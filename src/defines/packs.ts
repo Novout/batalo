@@ -41,7 +41,7 @@ export const champtions = (
     : type === 'rouanir intirl'
       ? {
           name: 'Rouanir Intirl',
-          description: `Affects the terrain in combat: Light Fog, Heavy Fog, and Urban.`,
+          description: `Affects the terrain in combat: Light Fog, Heavy Fog, and Urban Mode.`,
           textColor: 'black',
           backgroundColor: 'yellow',
           atk: 0,
@@ -343,9 +343,9 @@ export const rouanirCards = (): Card[] => {
   const batanto = {
     name: 'Batanto',
     icon: 'snow',
-    max: 7,
+    max: 8,
     description:
-      'This card enters with double value in Weak Fog and triple value in Heavy Fog.',
+      'This card enters with double value in Light Fog and triple value in Heavy Fog.',
     textColor: 'black',
     backgroundColor: 'yellow',
     atk: 1,
@@ -379,9 +379,22 @@ export const rouanirCards = (): Card[] => {
     skills: {},
   } as Card
 
+  const haino = {
+    name: 'Haino Melankolio',
+    icon: 'barbarian',
+    max: 2,
+    description: '',
+    textColor: 'black',
+    backgroundColor: 'yellow',
+    atk: 5,
+    def: 4,
+    skills: {},
+  } as Card
+
   rawCards.push(batanto)
   rawCards.push(drezor)
   rawCards.push(tarr)
+  rawCards.push(haino)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

@@ -18,6 +18,7 @@ declare module 'vue' {
     GameMain: typeof import('./src/components/GameMain.vue')['default']
     GameStart: typeof import('./src/components/GameStart.vue')['default']
     IconAttack: typeof import('./src/components/icons/IconAttack.vue')['default']
+    IconBarbarian: typeof import('./src/components/icons/IconBarbarian.vue')['default']
     IconBear: typeof import('./src/components/icons/IconBear.vue')['default']
     IconCloud: typeof import('./src/components/icons/IconCloud.vue')['default']
     IconDesolate: typeof import('./src/components/icons/IconDesolate.vue')['default']

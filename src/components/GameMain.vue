@@ -577,7 +577,7 @@
           if (table.a4.def <= 0) table.a4 = undefined
         }
       }
-      if(isTarrAdel) {
+      if (isTarrAdel) {
         table.a1 = undefined
       }
     }
@@ -622,7 +622,7 @@
           if (table.a4.def <= 0) table.a4 = undefined
         }
       }
-      if(isTarrAdel) {
+      if (isTarrAdel) {
         table.a2 = undefined
       }
     }
@@ -667,7 +667,7 @@
           if (table.a4.def <= 0) table.a4 = undefined
         }
       }
-      if(isTarrAdel) {
+      if (isTarrAdel) {
         table.a3 = undefined
       }
     }
@@ -712,7 +712,7 @@
           if (table.a4.def <= 0) table.a4 = undefined
         }
       }
-      if(isTarrAdel) {
+      if (isTarrAdel) {
         table.a4 = undefined
       }
     }
@@ -903,7 +903,7 @@
           if (table.b4.def <= 0) table.b4 = undefined
         }
       }
-      if(isTarrAdel) {
+      if (isTarrAdel) {
         table.b1 = undefined
       }
     }
@@ -945,7 +945,7 @@
         table.bcards.shift()
         table.bcards.shift()
       }
-      if(isTarrAdel) {
+      if (isTarrAdel) {
         table.b3 = undefined
       }
     }
@@ -966,7 +966,7 @@
         table.bcards.shift()
         table.bcards.shift()
       }
-      if(isTarrAdel) {
+      if (isTarrAdel) {
         table.b4 = undefined
       }
     }
