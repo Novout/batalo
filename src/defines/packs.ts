@@ -118,7 +118,7 @@ export const gyniCards = (): Card[] => {
       'Destroys any card on the field when attacking. If the opponent has no cards on the field, the owner of this card wins the game.',
     textColor: 'white',
     backgroundColor: 'blue',
-    atk: 9,
+    atk: 5,
     def: 5,
   } as Card
 
