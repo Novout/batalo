@@ -877,221 +877,76 @@
   }
 
   const combatRunner = () => {
-    if (table.a1 && table.b1) {
-      if (table.a1.skills?.fly && !table.b1.skills?.fly) {
-        table.b1.def -= table.a1.atk
-        if (table.b1.def <= 0) {
-          table.bcemetery.unshift(table.b1)
-          table.b1 = undefined
+    const set = [
+      ['a1', 'b1'],
+      ['a2', 'b2'],
+      ['a3', 'b3'],
+      ['a4', 'b4'],
+    ]
+
+    set.forEach((item) => {
+      const [a, b] = item as
+        | ['a1', 'b1']
+        | ['a2', 'b2']
+        | ['a3', 'b3']
+        | ['a4', 'b4']
+
+      if (table[a] && table[b]) {
+        if (table[a].skills?.fly && !table[b].skills?.fly) {
+          table[b].def -= table[a].atk
+          if (table[b].def <= 0) {
+            table.bcemetery.unshift(table[b])
+            table[b] = undefined
+            if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+          }
+        } else if (table[b].skills?.fly && !table[a].skills?.fly) {
+          table[a].def -= table[b].atk
+          if (table[a].def <= 0) {
+            table.acemetery.unshift(table[a])
+            table[a] = undefined
+            if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+          }
+        } else if (
+          table[a].atk === table[b].atk &&
+          table[a].def === table[b].def
+        ) {
+          table.acemetery.unshift(table[a])
+          table.bcemetery.unshift(table[b])
+          table[b] = undefined
+          table[a] = undefined
           if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-        }
-      } else if (table.b1.skills?.fly && !table.a1.skills?.fly) {
-        table.a1.def -= table.b1.atk
-        if (table.a1.def <= 0) {
-          table.acemetery.unshift(table.a1)
-          table.a1 = undefined
           if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-        }
-      } else if (
-        table.a1.atk === table.b1.atk &&
-        table.a1.def === table.b1.def
-      ) {
-        table.acemetery.unshift(table.a1)
-        table.bcemetery.unshift(table.b1)
-        table.b1 = undefined
-        table.a1 = undefined
-        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-      } else if (table.a1.atk >= table.b1.def) {
-        table.bcemetery.unshift(table.b1)
-        table.a1.def -= table.b1.atk
-        if (table.a1.def <= 0) table.a1 = undefined
-        table.b1 = undefined
-        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-      } else if (table.b1.atk >= table.a1.def) {
-        table.acemetery.unshift(table.a1)
-        table.b1.def -= table.a1.atk
-        if (table.b1.def <= 0) table.b1 = undefined
-        table.a1 = undefined
-        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-      } else {
-        table.a1.def -= table.b1.atk
-        table.b1.def -= table.a1.atk
-      }
-    } else if (table.a1 && !table.b1) {
-      table.blife -= table.a1.atk
-      if (table.a1.atk >= 3 && table.bmain?.name === 'Colos') table.blife++
-    } else if (table.b1 && !table.a1) {
-      table.alife -= table.b1.atk
-      if (table.b1.atk >= 3 && table.amain?.name === 'Colos') table.alife++
-    }
-
-    if (table.a2 && table.b2) {
-      if (table.a2.skills?.fly && !table.b2.skills?.fly) {
-        table.b2.def -= table.a2.atk
-        if (table.b2.def <= 0) {
-          table.bcemetery.unshift(table.b2)
-          table.b2 = undefined
+        } else if (table[a].atk >= table[b].def) {
+          table.bcemetery.unshift(table[b])
+          table[a].def -= table[b].atk
+          if (table[a].def <= 0) table[a] = undefined
+          table[b] = undefined
           if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-        }
-      } else if (table.b2.skills?.fly && !table.a2.skills?.fly) {
-        table.a2.def -= table.b2.atk
-        if (table.a2.def <= 0) {
-          table.acemetery.unshift(table.a2)
-          table.a2 = undefined
+        } else if (table[b].atk >= table[a].def) {
+          table.acemetery.unshift(table[a])
+          table[b].def -= table[a].atk
+          if (table[b].def <= 0) table[b] = undefined
+          table[a] = undefined
           if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+        } else {
+          table[a].def -= table[b].atk
+          table[b].def -= table[a].atk
         }
-      } else if (
-        table.a2.atk === table.b2.atk &&
-        table.a2.def === table.b2.def
-      ) {
-        table.acemetery.unshift(table.a2)
-        table.bcemetery.unshift(table.b2)
-        table.b2 = undefined
-        table.a2 = undefined
-        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-      } else if (table.a2.atk >= table.b2.def) {
-        table.bcemetery.unshift(table.b2)
-        table.a2.def -= table.b2.atk
-        if (table.a2.def <= 0) table.a2 = undefined
-        table.b2 = undefined
-        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-      } else if (table.b2.atk >= table.a2.def) {
-        table.acemetery.unshift(table.a2)
-        table.b2.def -= table.a2.atk
-        if (table.b2.def <= 0) table.b2 = undefined
-        table.a2 = undefined
-        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-      } else {
-        table.a2.def -= table.b2.atk
-        table.b2.def -= table.a2.atk
+      } else if (table[a] && !table[b]) {
+        table.blife -= table[a].atk
+        if (table[a].atk >= 3 && table.bmain?.name === 'Colos') table.blife++
+      } else if (table[b] && !table[a]) {
+        table.alife -= table[b].atk
+        if (table[b].atk >= 3 && table.amain?.name === 'Colos') table.alife++
       }
-    } else if (table.a2 && !table.b2) {
-      table.blife -= table.a2.atk
-      if (table.a2.atk >= 3 && table.bmain?.name === 'Colos') table.blife++
-    } else if (table.b2 && !table.a2) {
-      table.alife -= table.b2.atk
-      if (table.b2.atk >= 3 && table.amain?.name === 'Colos') table.alife++
-    }
 
-    if (table.a3 && table.b3) {
-      if (table.a3.skills?.fly && !table.b3.skills?.fly) {
-        table.b3.def -= table.a3.atk
-        if (table.b3.def <= 0) {
-          table.bcemetery.unshift(table.b3)
-          table.b3 = undefined
-          if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-        }
-      } else if (table.b3.skills?.fly && !table.a3.skills?.fly) {
-        table.a3.def -= table.b3.atk
-        if (table.a3.def <= 0) {
-          table.acemetery.unshift(table.a3)
-          table.a3 = undefined
-          if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-        }
-      } else if (
-        table.a3.atk === table.b3.atk &&
-        table.a3.def === table.b3.def
-      ) {
-        table.acemetery.unshift(table.a3)
-        table.bcemetery.unshift(table.b3)
-        table.b3 = undefined
-        table.a3 = undefined
-        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-      } else if (table.a3.atk >= table.b3.def) {
-        table.bcemetery.unshift(table.b3)
-        table.a3.def -= table.b3.atk
-        if (table.a3.def <= 0) table.a3 = undefined
-        table.b3 = undefined
-        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-      } else if (table.b3.atk >= table.a3.def) {
-        table.acemetery.unshift(table.a3)
-        table.b3.def -= table.a3.atk
-        if (table.b3.def <= 0) table.b3 = undefined
-        table.a3 = undefined
-        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-      } else {
-        table.a3.def -= table.b3.atk
-        table.b3.def -= table.a3.atk
+      if (table[a]?.name === 'Calino' && table[b]) {
+        table.blife -= table[a].atk
       }
-    } else if (table.a3 && !table.b3) {
-      table.blife -= table.a3.atk
-      if (table.a3.atk >= 3 && table.bmain?.name === 'Colos') table.blife++
-    } else if (table.b3 && !table.a3) {
-      table.alife -= table.b3.atk
-      if (table.b3.atk >= 3 && table.amain?.name === 'Colos') table.alife++
-    }
-
-    if (table.a4 && table.b4) {
-      if (table.a4.skills?.fly && !table.b4.skills?.fly) {
-        table.b4.def -= table.a4.atk
-        if (table.b4.def <= 0) {
-          table.bcemetery.unshift(table.b4)
-          table.b4 = undefined
-          if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-        }
-      } else if (table.b4.skills?.fly && !table.a4.skills?.fly) {
-        table.a4.def -= table.b4.atk
-        if (table.a4.def <= 0) {
-          table.acemetery.unshift(table.a4)
-          table.a4 = undefined
-          if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-        }
-      } else if (
-        table.a4.atk === table.b4.atk &&
-        table.a4.def === table.b4.def
-      ) {
-        table.acemetery.unshift(table.a4)
-        table.bcemetery.unshift(table.b4)
-        table.b4 = undefined
-        table.a4 = undefined
-        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-      } else if (table.a4.atk >= table.b4.def) {
-        table.bcemetery.unshift(table.b4)
-        table.a4.def -= table.b4.atk
-        if (table.a4.def <= 0) table.a4 = undefined
-        table.b4 = undefined
-        if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
-      } else if (table.b4.atk >= table.a4.def) {
-        table.acemetery.unshift(table.a4)
-        table.b4.def -= table.a4.atk
-        if (table.b4.def <= 0) table.b4 = undefined
-        table.a4 = undefined
-        if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
-      } else {
-        table.a4.def -= table.b4.atk
-        table.b4.def -= table.a4.atk
+      if (table[b]?.name === 'Calino' && table[a]) {
+        table.alife -= table[b].atk
       }
-    } else if (table.a4 && !table.b4) {
-      table.blife -= table.a4.atk
-      if (table.a4.atk >= 3 && table.bmain?.name === 'Colos') table.blife++
-    } else if (table.b4 && !table.a4) {
-      table.alife -= table.b4.atk
-      if (table.b4.atk >= 3 && table.amain?.name === 'Colos') table.alife++
-    }
-
-    if (table.a1?.name === 'Calino' && table.b1) {
-      table.blife -= table.a1.atk
-    } else if (table.a2?.name === 'Calino' && table.b2) {
-      table.blife -= table.a2.atk
-    } else if (table.a3?.name === 'Calino' && table.b3) {
-      table.blife -= table.a3.atk
-    } else if (table.a4?.name === 'Calino' && table.b4) {
-      table.blife -= table.a4.atk
-    }
-
-    if (table.b1?.name === 'Calino' && table.a1) {
-      table.alife -= table.b1.atk
-    } else if (table.b2?.name === 'Calino' && table.a2) {
-      table.alife -= table.b2.atk
-    } else if (table.b3?.name === 'Calino' && table.a3) {
-      table.alife -= table.b3.atk
-    } else if (table.b4?.name === 'Calino' && table.a4) {
-      table.alife -= table.b4.atk
-    }
+    })
   }
 
   const onReset = () => {
