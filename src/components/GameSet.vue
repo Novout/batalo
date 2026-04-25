@@ -173,7 +173,7 @@
           OPTIONS.playerDeck === 'Gyni' ? 'gyni' : 'thorinem',
         )
       }
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 6; i++) {
         const card = table.bdeck.pop()
         if (card) table.bcards.push(card)
       }
@@ -188,7 +188,7 @@
           OPTIONS.botDeck === 'Gyni' ? 'gyni' : 'thorinem',
         )
       }
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 6; i++) {
         const card = table.bdeck.pop()
         if (card) table.acards.push(card)
       }
