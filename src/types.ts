@@ -11,6 +11,7 @@ export type Icon =
   | 'ylheiry'
   | 'melankolio'
   | 'smoke'
+  | 'fly'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -24,6 +25,7 @@ export type CardName =
   | 'Ylheiry'
   | 'Melankolio'
   | 'Zaytek'
+  | 'Vyyxxv'
 
 export interface Card {
   id?: string
@@ -36,6 +38,9 @@ export interface Card {
   def: number
   icon: Icon
   extra: any
+  skills: {
+    fly?: boolean
+  }
 }
 
 export type CardChampion = Card

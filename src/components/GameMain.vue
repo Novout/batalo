@@ -625,7 +625,24 @@
 
   const combatRunner = () => {
     if (table.a1 && table.b1) {
-      if (table.a1.atk === table.b1.atk && table.a1.def === table.b1.def) {
+      if (table.a1.skills?.fly && !table.b1.skills?.fly) {
+        table.b1.def -= table.a1.atk
+        if (table.b1.def <= 0) {
+          table.bcemetery.unshift(table.b1)
+          table.b1 = undefined
+          if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+        }
+      } else if (table.b1.skills?.fly && !table.a1.skills?.fly) {
+        table.a1.def -= table.b1.atk
+        if (table.a1.def <= 0) {
+          table.acemetery.unshift(table.a1)
+          table.a1 = undefined
+          if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+        }
+      } else if (
+        table.a1.atk === table.b1.atk &&
+        table.a1.def === table.b1.def
+      ) {
         table.acemetery.unshift(table.a1)
         table.bcemetery.unshift(table.b1)
         table.b1 = undefined
@@ -657,7 +674,24 @@
     }
 
     if (table.a2 && table.b2) {
-      if (table.a2.atk === table.b2.atk && table.a2.def === table.b2.def) {
+      if (table.a2.skills?.fly && !table.b2.skills?.fly) {
+        table.b2.def -= table.a2.atk
+        if (table.b2.def <= 0) {
+          table.bcemetery.unshift(table.b2)
+          table.b2 = undefined
+          if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+        }
+      } else if (table.b2.skills?.fly && !table.a2.skills?.fly) {
+        table.a2.def -= table.b2.atk
+        if (table.a2.def <= 0) {
+          table.acemetery.unshift(table.a2)
+          table.a2 = undefined
+          if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+        }
+      } else if (
+        table.a2.atk === table.b2.atk &&
+        table.a2.def === table.b2.def
+      ) {
         table.acemetery.unshift(table.a2)
         table.bcemetery.unshift(table.b2)
         table.b2 = undefined
@@ -689,7 +723,24 @@
     }
 
     if (table.a3 && table.b3) {
-      if (table.a3.atk === table.b3.atk && table.a3.def === table.b3.def) {
+      if (table.a3.skills?.fly && !table.b3.skills?.fly) {
+        table.b3.def -= table.a3.atk
+        if (table.b3.def <= 0) {
+          table.bcemetery.unshift(table.b3)
+          table.b3 = undefined
+          if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+        }
+      } else if (table.b3.skills?.fly && !table.a3.skills?.fly) {
+        table.a3.def -= table.b3.atk
+        if (table.a3.def <= 0) {
+          table.acemetery.unshift(table.a3)
+          table.a3 = undefined
+          if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+        }
+      } else if (
+        table.a3.atk === table.b3.atk &&
+        table.a3.def === table.b3.def
+      ) {
         table.acemetery.unshift(table.a3)
         table.bcemetery.unshift(table.b3)
         table.b3 = undefined
@@ -721,7 +772,24 @@
     }
 
     if (table.a4 && table.b4) {
-      if (table.a4.atk === table.b4.atk && table.a4.def === table.b4.def) {
+      if (table.a4.skills?.fly && !table.b4.skills?.fly) {
+        table.b4.def -= table.a4.atk
+        if (table.b4.def <= 0) {
+          table.bcemetery.unshift(table.b4)
+          table.b4 = undefined
+          if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
+        }
+      } else if (table.b4.skills?.fly && !table.a4.skills?.fly) {
+        table.a4.def -= table.b4.atk
+        if (table.a4.def <= 0) {
+          table.acemetery.unshift(table.a4)
+          table.a4 = undefined
+          if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
+        }
+      } else if (
+        table.a4.atk === table.b4.atk &&
+        table.a4.def === table.b4.def
+      ) {
         table.acemetery.unshift(table.a4)
         table.bcemetery.unshift(table.b4)
         table.b4 = undefined

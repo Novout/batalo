@@ -9,6 +9,7 @@
   <IconBear v-else-if="props.icon === 'ylheiry'" class="h-20 w-20" />
   <IconMelankolio v-else-if="props.icon === 'melankolio'" class="h-20 w-20" />
   <IconMask2 v-else-if="props.icon === 'smoke'" class="h-20 w-20" />
+  <IconFly v-else-if="props.icon === 'fly'" class="h-20 w-20" />
   <p v-else></p>
 </template>
 

@@ -13,6 +13,9 @@
         <IconAttack class="h-4 w-4" />
         <p>{{ props.content?.atk }}</p>
       </div>
+      <div class="flex items-center">
+        <IconCloud v-if="props.content?.skills?.fly" class="h-4 w-4" />
+      </div>
       <div class="flex items-center gap-2">
         <IconShield class="h-4 w-4" />
         <p>{{ props.content?.def }}</p>

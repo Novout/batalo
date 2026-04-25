@@ -34,6 +34,7 @@ export const champtions = (type: 'gyni' | 'thorinem' | 'letesno'): Card => {
         extra: {
           points: 0,
         },
+        skills: {},
       }
     : {
         name: 'Colos',
@@ -45,6 +46,7 @@ export const champtions = (type: 'gyni' | 'thorinem' | 'letesno'): Card => {
         icon: 'mask' as Icon,
         max: 1,
         extra: {},
+        skills: {},
       }
 }
 
@@ -61,6 +63,7 @@ export const gyniCards = (): Card[] => {
     backgroundColor: 'blue',
     atk: 1,
     def: 1,
+    skills: {},
   } as Card
 
   const raptor = {
@@ -72,6 +75,7 @@ export const gyniCards = (): Card[] => {
     backgroundColor: 'blue',
     atk: 3,
     def: 1,
+    skills: {},
   } as Card
 
   const valv = {
@@ -84,6 +88,7 @@ export const gyniCards = (): Card[] => {
     backgroundColor: 'blue',
     atk: 3,
     def: 2,
+    skills: {},
   } as Card
 
   const desolate = {
@@ -96,6 +101,7 @@ export const gyniCards = (): Card[] => {
     backgroundColor: 'blue',
     atk: 4,
     def: 1,
+    skills: {},
   } as Card
 
   const ylheiry = {
@@ -108,6 +114,7 @@ export const gyniCards = (): Card[] => {
     backgroundColor: 'blue',
     atk: 2,
     def: 3,
+    skills: {},
   } as Card
 
   const melankolio = {
@@ -120,6 +127,7 @@ export const gyniCards = (): Card[] => {
     backgroundColor: 'blue',
     atk: 5,
     def: 5,
+    skills: {},
   } as Card
 
   const zaytek = {
@@ -132,6 +140,21 @@ export const gyniCards = (): Card[] => {
     backgroundColor: 'blue',
     atk: 3,
     def: 3,
+    skills: {},
+  } as Card
+
+  const vyyxxv = {
+    name: 'Vyyxxv',
+    icon: 'fly',
+    max: 2,
+    description: 'It has the ability to fly.',
+    textColor: 'white',
+    backgroundColor: 'blue',
+    atk: 1,
+    def: 3,
+    skills: {
+      fly: true,
+    },
   } as Card
 
   rawCards.push(empty_skeletion1)
@@ -141,6 +164,7 @@ export const gyniCards = (): Card[] => {
   rawCards.push(ylheiry)
   rawCards.push(melankolio)
   rawCards.push(zaytek)
+  rawCards.push(vyyxxv)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {
@@ -169,6 +193,7 @@ export const thorinemCards = (): Card[] => {
     extra: {
       supportNekroRounds: 0,
     },
+    skills: {},
   } as Card
 
   rawCards.push(support_nekro)
