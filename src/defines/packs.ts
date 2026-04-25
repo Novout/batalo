@@ -423,7 +423,7 @@ export const rouanirCards = (): Card[] => {
     textColor: 'black',
     backgroundColor: 'yellow',
     atk: 1,
-    def: 3,
+    def: 2,
     skills: {},
   } as Card
 
