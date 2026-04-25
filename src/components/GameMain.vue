@@ -252,13 +252,13 @@
           setRelicter = table.a4
         }
 
-        if(setRelicter) {
-          if(!table.a1) table.a1 = setRelicter
-          else if(!table.a2) table.a2 = setRelicter
-          else if(!table.a3) table.a3 = setRelicter
-          else if(!table.a4) table.a4 = setRelicter
+        if (setRelicter) {
+          if (!table.a1) table.a1 = setRelicter
+          else if (!table.a2) table.a2 = setRelicter
+          else if (!table.a3) table.a3 = setRelicter
+          else if (!table.a4) table.a4 = setRelicter
         }
-        
+
         setRelicter = undefined
 
         if (table.b1?.name === 'Relicter' && table.b1.extra.survive >= 2) {
@@ -278,11 +278,11 @@
           setRelicter = table.b4
         }
 
-        if(setRelicter) {
-          if(!table.b1) table.b1 = setRelicter
-          else if(!table.b2) table.b2 = setRelicter
-          else if(!table.b3) table.b3 = setRelicter
-          else if(!table.b4) table.b4 = setRelicter
+        if (setRelicter) {
+          if (!table.b1) table.b1 = setRelicter
+          else if (!table.b2) table.b2 = setRelicter
+          else if (!table.b3) table.b3 = setRelicter
+          else if (!table.b4) table.b4 = setRelicter
         }
 
         if (table.a1?.name === 'Atashar') table.atotem++
@@ -965,6 +965,26 @@
     } else if (table.b4 && !table.a4) {
       table.alife -= table.b4.atk
       if (table.b4.atk >= 3 && table.amain?.name === 'Colos') table.alife++
+    }
+
+    if (table.a1?.name === 'Calino' && table.b1) {
+      table.blife -= table.a1.atk
+    } else if (table.a2?.name === 'Calino' && table.b2) {
+      table.blife -= table.a2.atk
+    } else if (table.a3?.name === 'Calino' && table.b3) {
+      table.blife -= table.a3.atk
+    } else if (table.a4?.name === 'Calino' && table.b4) {
+      table.blife -= table.a4.atk
+    }
+
+    if (table.b1?.name === 'Calino' && table.a1) {
+      table.alife -= table.b1.atk
+    } else if (table.b2?.name === 'Calino' && table.a2) {
+      table.alife -= table.b2.atk
+    } else if (table.b3?.name === 'Calino' && table.a3) {
+      table.alife -= table.b3.atk
+    } else if (table.b4?.name === 'Calino' && table.a4) {
+      table.alife -= table.b4.atk
     }
   }
 

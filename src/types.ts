@@ -37,6 +37,7 @@ export type CardName =
   | 'Hidralon Telono'
   | "Sair's Lackeys"
   | 'Relicter'
+  | 'Calino'
 
 export interface Card {
   id?: string

@@ -250,18 +250,29 @@ export const thorinemCards = (): Card[] => {
   } as Card
 
   const relicter = {
-    name: "Relicter",
+    name: 'Relicter',
     icon: 'shadow',
     max: 2,
     description:
-      "If it survives more than two turns of combat on the field, a copy of Seto enters the game.",
+      'If it survives more than two turns of combat on the field, a copy of Seto enters the game.',
     textColor: 'white',
     backgroundColor: 'green',
     atk: 3,
     def: 3,
     extra: {
-      survive: 0
-    }
+      survive: 0,
+    },
+  } as Card
+
+  const calino = {
+    name: 'Calino',
+    icon: 'fervent',
+    max: 2,
+    description: "It can directly attack the opponent's Life Points.",
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 4,
+    def: 1,
   } as Card
 
   rawCards.push(last_tree)
@@ -270,6 +281,7 @@ export const thorinemCards = (): Card[] => {
   rawCards.push(hidralon_telono)
   rawCards.push(sair)
   rawCards.push(relicter)
+  rawCards.push(calino)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {
