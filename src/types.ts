@@ -12,6 +12,7 @@ export type Icon =
   | 'melankolio'
   | 'smoke'
   | 'fly'
+  | 'tree'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -26,6 +27,7 @@ export type CardName =
   | 'Melankolio'
   | 'Zaytek'
   | 'Vyyxxv'
+  | 'Last Tree'
 
 export interface Card {
   id?: string

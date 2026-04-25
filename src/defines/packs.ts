@@ -196,6 +196,19 @@ export const thorinemCards = (): Card[] => {
     skills: {},
   } as Card
 
+  const last_tree = {
+    name: 'Last Tree',
+    icon: 'tree',
+    max: 3,
+    description: 'Upon entering the field, grants an additional action.',
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 2,
+    def: 2,
+    skills: {},
+  } as Card
+
+  rawCards.push(last_tree)
   rawCards.push(support_nekro)
 
   rawCards.forEach((card) => {

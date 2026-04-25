@@ -30,6 +30,7 @@ declare module 'vue' {
     IconShield: typeof import('./src/components/icons/IconShield.vue')['default']
     IconSkeleton: typeof import('./src/components/icons/IconSkeleton.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
+    IconTree: typeof import('./src/components/icons/IconTree.vue')['default']
     IconTriangle: typeof import('./src/components/icons/IconTriangle.vue')['default']
     IconValv: typeof import('./src/components/icons/IconValv.vue')['default']
   }

@@ -380,12 +380,17 @@
 
     const isYlheiry = onSelectCard.value?.name === 'Ylheiry'
     const isZaytek = onSelectCard.value?.name === 'Zaytek'
+    const isLastTree = onSelectCard.value?.name === 'Last Tree'
 
     if (isZaytek) {
       if (table.a1) onSelectCard.value!.def++
       if (table.a2) onSelectCard.value!.def++
       if (table.a3) onSelectCard.value!.def++
       if (table.a4) onSelectCard.value!.def++
+    }
+
+    if (isLastTree) {
+      cycle.action++
     }
 
     if (!table.b1 && target === 'b1') {
@@ -566,6 +571,8 @@
         else if (!table.b4) table.b4 = desolate
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
+
+      if (card.name === 'Last Tree') botAction()
     }
 
     if (!table.a2 && target === 'a2') {
@@ -579,6 +586,7 @@
         else if (!table.b4) table.b4 = desolate
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
+      if (card.name === 'Last Tree') botAction()
     }
 
     if (!table.a3 && target === 'a3') {
@@ -592,6 +600,7 @@
         else if (!table.b4) table.b4 = desolate
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
+      if (card.name === 'Last Tree') botAction()
     }
 
     if (!table.a4 && target === 'a4') {
@@ -605,6 +614,7 @@
         else if (!table.b4) table.b4 = desolate
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
+      if (card.name === 'Last Tree') botAction()
     }
 
     if (
