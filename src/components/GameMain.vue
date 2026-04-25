@@ -209,14 +209,19 @@
   watch(
     computed(() => cycle.roundSet),
     (round) => {
-      if (cycle.roundAction === 4) {
+      if (cycle.roundSet === 'combat') {
+        const nextBotCard = table.adeck.pop()
+        if (nextBotCard) table.acards.push(nextBotCard)
+        const nextPlayerCard = table.bdeck.pop()
+        if (nextPlayerCard) table.bcards.push(nextPlayerCard)
+      }
+
+      if (cycle.roundAction === 3) {
         cycle.roundSet = 'combat'
         cycle.roundAction = 0
 
         combatRunner()
       } else if (round === 'player') {
-        const nextCard = table.bdeck.pop()
-        if (nextCard) table.bcards.push(nextCard)
         cycle.action = 1
         cycle.roundAction++
 
@@ -262,8 +267,6 @@
           return
         }
       } else if (round === 'bot') {
-        const nextCard = table.adeck.pop()
-        if (nextCard) table.acards.push(nextCard)
         botAction()
         cycle.roundAction++
       }
@@ -736,7 +739,6 @@
     table.bdeck = []
     table.bcards = []
     table.bcemetery = []
-
     ;((cycle.started = true), (cycle.roundSet = 'player'), (cycle.round = 1))
     cycle.roundAction = 0
     cycle.action = 0
