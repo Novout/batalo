@@ -9,6 +9,7 @@ export type Icon =
   | 'fervent'
   | 'desolate'
   | 'ylheiry'
+  | 'melankolio'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -20,6 +21,7 @@ export type CardName =
   | 'Support Nekro'
   | 'The Desolate'
   | 'Ylheiry'
+  | 'Melankolio'
 
 export interface Card {
   id?: string

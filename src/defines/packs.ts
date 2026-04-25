@@ -110,11 +110,24 @@ export const gyniCards = (): Card[] => {
     def: 3,
   } as Card
 
+  const melankolio = {
+    name: 'Melankolio',
+    icon: 'melankolio',
+    max: 1,
+    description:
+      'Destroys any card on the field when attacking. If the opponent has no cards on the field, the owner of this card wins the game.',
+    textColor: 'white',
+    backgroundColor: 'blue',
+    atk: 9,
+    def: 5,
+  } as Card
+
   rawCards.push(empty_skeletion1)
   rawCards.push(valv)
   rawCards.push(raptor)
   rawCards.push(desolate)
   rawCards.push(ylheiry)
+  rawCards.push(melankolio)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

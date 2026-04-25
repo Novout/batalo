@@ -237,6 +237,21 @@
         } else if (table.b4?.name === 'Support Nekro') {
           table.b4.extra.supportNekroRounds++
         }
+
+        if (
+          !table.b1 &&
+          !table.b2 &&
+          !table.b3 &&
+          !table.b4 &&
+          (table.a1?.name === 'Melankolio' ||
+            (table.a2?.name === 'Melankolio' ||
+              table.a3?.name === 'Melankolio' ||
+              table.a4?.name === 'Melankolio'))
+        ) {
+          table.blife = 0
+
+          return
+        }
       } else if (round === 'bot') {
         const nextCard = table.adeck.pop()
         if (nextCard) table.acards.push(nextCard)
@@ -561,6 +576,21 @@
         else if (!table.b4) table.b4 = desolate
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
+    }
+
+    if (
+      !table.a1 &&
+      !table.a2 &&
+      !table.a3 &&
+      !table.a4 &&
+      (table.b1?.name === 'Melankolio' ||
+        (table.b2?.name === 'Melankolio' ||
+          table.b3?.name === 'Melankolio' ||
+          table.b4?.name === 'Melankolio'))
+    ) {
+      table.alife = 0
+
+      return
     }
   }
 
