@@ -12,6 +12,7 @@
         <option>Random</option>
         <option>Gyni</option>
         <option>Thorinem</option>
+        <option>Rouanir Intirl</option>
       </select>
     </div>
     <div class="flex gap-5 w-full items-center">
@@ -24,6 +25,7 @@
         <option>Random</option>
         <option>Gyni</option>
         <option>Thorinem</option>
+        <option>Rouanir Intirl</option>
       </select>
     </div>
     <button @click="emit('start')" class="px-4 py-2 text-lg">

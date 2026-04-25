@@ -14,6 +14,12 @@
     ]"
   >
     <p class="text-xl">{{ props.content?.extra?.points }}</p>
+    <p v-if="props.content?.extra?.terrain" class="text-xl">
+      {{
+        String(props.content?.extra?.terrain).charAt(0).toUpperCase() +
+        String(props.content?.extra?.terrain).slice(1).replace('_', ' ')
+      }}
+    </p>
     <div class="flex items-center w-full justify-center">
       <GameIcons :icon="props.content?.icon" />
     </div>

@@ -20,7 +20,9 @@ export const external = () => {
   return { phortem_fervent }
 }
 
-export const champtions = (type: 'gyni' | 'thorinem' | 'letesno'): Card => {
+export const champtions = (
+  type: 'gyni' | 'thorinem' | 'rouanir intirl',
+): Card => {
   return type === 'gyni'
     ? {
         name: 'V Xwyyyw',
@@ -36,18 +38,33 @@ export const champtions = (type: 'gyni' | 'thorinem' | 'letesno'): Card => {
         },
         skills: {},
       }
-    : {
-        name: 'Colos',
-        description: `When you suffer 3 or more Hit Points this turn, gain 1 Life Point.`,
-        textColor: 'white',
-        backgroundColor: 'green',
-        atk: 0,
-        def: 0,
-        icon: 'mask' as Icon,
-        max: 1,
-        extra: {},
-        skills: {},
-      }
+    : type === 'rouanir intirl'
+      ? {
+          name: 'Rouanir Intirl',
+          description: `Affects the terrain in combat: Light Fog, Heavy Fog, and Urban.`,
+          textColor: 'black',
+          backgroundColor: 'yellow',
+          atk: 0,
+          def: 0,
+          icon: 'rouanir' as Icon,
+          max: 1,
+          extra: {
+            terrain: 'urban' as 'urban' | 'light_fog' | 'heavy_fog',
+          },
+          skills: {},
+        }
+      : {
+          name: 'Colos',
+          description: `When you suffer 3 or more Hit Points this turn, gain 1 Life Point.`,
+          textColor: 'white',
+          backgroundColor: 'green',
+          atk: 0,
+          def: 0,
+          icon: 'mask' as Icon,
+          max: 1,
+          extra: {},
+          skills: {},
+        }
 }
 
 export const gyniCards = (): Card[] => {
@@ -307,6 +324,36 @@ export const thorinemCards = (): Card[] => {
   rawCards.push(calino)
   rawCards.push(faztaylhi)
   rawCards.push(faded)
+
+  rawCards.forEach((card) => {
+    for (let i = 0; i < card.max; i++) {
+      deck.push(card)
+    }
+  })
+
+  deck = deck.map((x) => ({ id: uuidv4(), ...x }))
+
+  return shuffle(deck)
+}
+
+export const rouanirCards = (): Card[] => {
+  let deck = [] as Card[]
+  const rawCards = []
+
+  const batanto = {
+    name: 'Batanto',
+    icon: 'snow',
+    max: 7,
+    description:
+      'This card enters with double value in Weak Fog and triple value in Heavy Fog.',
+    textColor: 'black',
+    backgroundColor: 'yellow',
+    atk: 1,
+    def: 1,
+    skills: {},
+  } as Card
+
+  rawCards.push(batanto)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

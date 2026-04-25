@@ -127,6 +127,7 @@
     champtions,
     external,
     gyniCards,
+    rouanirCards,
     thorinemCards,
   } from '../defines/packs'
   import type { Maybe, Card, CardChampion } from '../types'
@@ -178,16 +179,25 @@
   )
 
   const onStart = () => {
-    if (OPTIONS.playerDeck === 'Random') {
-      const deck = random(['gyni', 'thorinem'])
-      table.bdeck = deck === 'gyni' ? gyniCards() : thorinemCards()
-      table.bmain = champtions(deck as 'gyni' | 'thorinem')
+    const option = OPTIONS.playerDeck.toLowerCase()
+
+    if (option === 'random') {
+      const deck = random(['gyni', 'thorinem', 'rouanir intirl'])
+      table.bdeck =
+        deck === 'gyni'
+          ? gyniCards()
+          : deck === 'rouanir intirl'
+            ? rouanirCards()
+            : thorinemCards()
+      table.bmain = champtions(deck as 'gyni' | 'thorinem' | 'rouanir intirl')
     } else {
       table.bdeck =
-        OPTIONS.playerDeck === 'Gyni' ? gyniCards() : thorinemCards()
-      table.bmain = champtions(
-        OPTIONS.playerDeck === 'Gyni' ? 'gyni' : 'thorinem',
-      )
+        option === 'gyni'
+          ? gyniCards()
+          : option === 'rouanir intirl'
+            ? rouanirCards()
+            : thorinemCards()
+      table.bmain = champtions(option as any)
     }
     for (let i = 0; i < 6; i++) {
       const card = table.bdeck.pop()
@@ -398,6 +408,26 @@
       if (table.b4?.name === 'Raptor') {
         table.b4 = external().phortem_fervent()
       }
+
+      if (table.amain?.name === 'Rouanir Intirl') {
+        if (table.amain?.extra?.terrain === 'light_fog') {
+          table.amain.extra.terrain = 'heavy_fog'
+        } else if (table.bmain?.extra?.terrain === 'heavy_fog') {
+          table.amain.extra.terrain = 'urban'
+        } else {
+          table.amain.extra.terrain = 'light_fog'
+        }
+      }
+
+      if (table.bmain?.name === 'Rouanir Intirl') {
+        if (table.bmain?.extra?.terrain === 'light_fog') {
+          table.bmain.extra.terrain = 'heavy_fog'
+        } else if (table.bmain?.extra?.terrain === 'heavy_fog') {
+          table.bmain.extra.terrain = 'urban'
+        } else {
+          table.bmain.extra.terrain = 'light_fog'
+        }
+      }
     }
 
     cycle.round++
@@ -479,6 +509,7 @@
     const isSair = card.name === "Sair's Lackeys"
     const isFaztaylhi = card.name === 'Faztaylhi'
     const isFaded = card.name === 'Faded'
+    const isBatanto = card.name === 'Batanto'
 
     if (isZaytek) {
       if (table.a1) card.def++
@@ -492,6 +523,15 @@
     }
 
     if (!table.b1 && target === 'b1') {
+      if (isBatanto) {
+        if (table.bmain?.extra?.terrain === 'light_fog') {
+          card.def *= 2
+          card.atk *= 2
+        } else if (table.bmain?.extra?.terrain === 'heavy_fog') {
+          card.def *= 3
+          card.atk *= 3
+        }
+      }
       table.b1 = card
       table.bcards = table.bcards.filter(
         (item) => item.id !== onSelectCard.value?.id,
@@ -531,6 +571,15 @@
     }
 
     if (!table.b2 && target === 'b2') {
+      if (isBatanto) {
+        if (table.bmain?.extra?.terrain === 'light_fog') {
+          card.def *= 2
+          card.atk *= 2
+        } else if (table.bmain?.extra?.terrain === 'heavy_fog') {
+          card.def *= 3
+          card.atk *= 3
+        }
+      }
       table.b2 = card
       table.bcards = table.bcards.filter(
         (item) => item.id !== onSelectCard.value?.id,
@@ -564,6 +613,15 @@
     }
 
     if (!table.b3 && target === 'b3') {
+      if (isBatanto) {
+        if (table.bmain?.extra?.terrain === 'light_fog') {
+          card.def *= 2
+          card.atk *= 2
+        } else if (table.bmain?.extra?.terrain === 'heavy_fog') {
+          card.def *= 3
+          card.atk *= 3
+        }
+      }
       table.b3 = card
       table.bcards = table.bcards.filter(
         (item) => item.id !== onSelectCard.value?.id,
@@ -597,6 +655,15 @@
     }
 
     if (!table.b4 && target === 'b4') {
+      if (isBatanto) {
+        if (table.bmain?.extra?.terrain === 'light_fog') {
+          card.def *= 2
+          card.atk *= 2
+        } else if (table.bmain?.extra?.terrain === 'heavy_fog') {
+          card.def *= 3
+          card.atk *= 3
+        }
+      }
       table.b4 = card
       table.bcards = table.bcards.filter(
         (item) => item.id !== onSelectCard.value?.id,
@@ -634,6 +701,16 @@
     // TODO: Valv, V Immutable action
     const target = random(['a1', 'a2', 'a3', 'a4'])
     const card = random(table.acards) as Card
+
+    if (card.name === 'Batanto') {
+      if (table.amain?.extra?.terrain === 'light_fog') {
+        card.def *= 2
+        card.atk *= 2
+      } else if (table.amain?.extra?.terrain === 'heavy_fog') {
+        card.def *= 3
+        card.atk *= 3
+      }
+    }
 
     const isZaytek = card.name === 'Zaytek'
 

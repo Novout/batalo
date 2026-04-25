@@ -20,6 +20,8 @@ export type Icon =
   | 'shadow'
   | 'regroup'
   | 'lion'
+  | 'snow'
+  | 'rouanir'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -42,6 +44,8 @@ export type CardName =
   | 'Calino'
   | 'Faztaylhi'
   | 'Faded'
+  | 'Batanto'
+  | 'Rouanir Intirl'
 
 export interface Card {
   id?: string

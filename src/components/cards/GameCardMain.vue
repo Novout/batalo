@@ -5,7 +5,7 @@
       backgroundColor: content?.backgroundColor,
       color: content?.textColor,
     }"
-    class="xl:w-40 xl:h-60 sm:w-30 sm:h-50 w-25 h-40 p-2 rounded-md flex flex-col items-center"
+    class="xl:w-40 xl:h-60 sm:w-30 sm:h-50 w-25 h-50 p-2 rounded-md flex flex-col items-center"
     @click="emit('select')"
     :class="[
       props.content === undefined ? 'border-1.5 border-dashed border-gray' : '',
@@ -30,7 +30,7 @@
       <GameIcons :icon="props.content?.icon" />
     </div>
     <p>{{ props.content?.name }}</p>
-    <p class="text-xs">{{ props.content?.description }}</p>
+    <p class="text-xs" v-if="isHovered">{{ props.content?.description }}</p>
   </div>
 </template>
 
