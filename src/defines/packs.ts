@@ -219,7 +219,7 @@ export const thorinemCards = (): Card[] => {
     atk: 0,
     def: 5,
     skills: {
-      totem: true
+      totem: true,
     },
   } as Card
 
@@ -233,14 +233,27 @@ export const thorinemCards = (): Card[] => {
     atk: 2,
     def: 2,
     skills: {
-      fly: true
+      fly: true,
     },
+  } as Card
+
+  const sair = {
+    name: "Sair's Lackeys",
+    icon: 'group',
+    max: 2,
+    description:
+      "Upon entering the field, delete two cards from the opponent's hand.",
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 3,
+    def: 3,
   } as Card
 
   rawCards.push(last_tree)
   rawCards.push(support_nekro)
   rawCards.push(atashar)
   rawCards.push(hidralon_telono)
+  rawCards.push(sair)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

@@ -14,6 +14,7 @@
   <IconTotem v-else-if="props.icon === 'totem'" class="h-20 w-20" />
   <IconTotem2 v-else-if="props.icon === 'totem2'" class="h-20 w-20" />
   <IconDragon v-else-if="props.icon === 'dragon'" class="h-20 w-20" />
+  <IconGroup v-else-if="props.icon === 'group'" class="h-20 w-20" />
   <p v-else></p>
 </template>
 

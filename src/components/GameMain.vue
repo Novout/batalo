@@ -413,6 +413,7 @@
     const isYlheiry = card.name === 'Ylheiry'
     const isZaytek = card.name === 'Zaytek'
     const isLastTree = card.name === 'Last Tree'
+    const isSair = card.name === "Sair's Lackeys"
 
     if (isZaytek) {
       if (table.a1) card.def++
@@ -434,6 +435,10 @@
       cycle.action--
       const cemetery = table.bcemetery.shift()
       if (isYlheiry && cemetery) table.bcards.push(cemetery)
+      if (isSair) {
+        table.acards.shift()
+        table.acards.shift()
+      }
     }
 
     if (!table.b2 && target === 'b2') {
@@ -445,6 +450,10 @@
       cycle.action--
       const cemetery = table.bcemetery.shift()
       if (isYlheiry && cemetery) table.bcards.push(cemetery)
+      if (isSair) {
+        table.acards.shift()
+        table.acards.shift()
+      }
     }
 
     if (!table.b3 && target === 'b3') {
@@ -456,6 +465,10 @@
       cycle.action--
       const cemetery = table.bcemetery.shift()
       if (isYlheiry && cemetery) table.bcards.push(cemetery)
+      if (isSair) {
+        table.acards.shift()
+        table.acards.shift()
+      }
     }
 
     if (!table.b4 && target === 'b4') {
@@ -467,6 +480,10 @@
       cycle.action--
       const cemetery = table.bcemetery.shift()
       if (isYlheiry && cemetery) table.bcards.push(cemetery)
+      if (isSair) {
+        table.acards.shift()
+        table.acards.shift()
+      }
     }
   }
 
@@ -616,6 +633,10 @@
       table.acards = table.acards.filter((item) => item.id !== card.id)
 
       if (card.name === 'Last Tree') botAction()
+      if (card.name === "Sair's Lackeys") {
+        table.bcards.shift()
+        table.bcards.shift()
+      }
     }
 
     if (!table.a2 && target === 'a2') {
@@ -630,6 +651,10 @@
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
       if (card.name === 'Last Tree') botAction()
+      if (card.name === "Sair's Lackeys") {
+        table.bcards.shift()
+        table.bcards.shift()
+      }
     }
 
     if (!table.a3 && target === 'a3') {
@@ -644,6 +669,10 @@
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
       if (card.name === 'Last Tree') botAction()
+      if (card.name === "Sair's Lackeys") {
+        table.bcards.shift()
+        table.bcards.shift()
+      }
     }
 
     if (!table.a4 && target === 'a4') {
@@ -658,6 +687,10 @@
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
       if (card.name === 'Last Tree') botAction()
+      if (card.name === "Sair's Lackeys") {
+        table.bcards.shift()
+        table.bcards.shift()
+      }
     }
 
     if (
