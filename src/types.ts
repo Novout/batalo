@@ -8,6 +8,7 @@ export type Icon =
   | 'valv'
   | 'fervent'
   | 'desolate'
+  | 'ylheiry'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -18,6 +19,7 @@ export type CardName =
   | 'Valv, V Immutable'
   | 'Support Nekro'
   | 'The Desolate'
+  | 'Ylheiry'
 
 export interface Card {
   id?: string

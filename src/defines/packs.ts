@@ -95,13 +95,26 @@ export const gyniCards = (): Card[] => {
     textColor: 'white',
     backgroundColor: 'blue',
     atk: 4,
-    def: 2,
+    def: 1,
+  } as Card
+
+  const ylheiry = {
+    name: 'Ylheiry',
+    icon: 'ylheiry',
+    max: 3,
+    description:
+      'When you enter the field, the last card to go to the graveyard returns to your hand.',
+    textColor: 'white',
+    backgroundColor: 'blue',
+    atk: 2,
+    def: 3,
   } as Card
 
   rawCards.push(empty_skeletion1)
   rawCards.push(valv)
   rawCards.push(raptor)
   rawCards.push(desolate)
+  rawCards.push(ylheiry)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

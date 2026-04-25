@@ -130,6 +130,7 @@
     a4: undefined as Maybe<Card>,
     adeck: [] as Card[],
     acards: [] as Card[],
+    acemetery: [] as Card[],
     bmain: undefined as Maybe<CardChampion>,
     blife: 12,
     b1: undefined as Maybe<Card>,
@@ -138,6 +139,7 @@
     b4: undefined as Maybe<Card>,
     bcards: [] as Card[],
     bdeck: [] as Card[],
+    bcemetery: [] as Card[],
   })
 
   const cycle = reactive({
@@ -349,6 +351,8 @@
       }
     }
 
+    const isYlheiry = onSelectCard.value?.name === 'Ylheiry'
+
     if (!table.b1 && target === 'b1') {
       table.b1 = onSelectCard.value
       table.bcards = table.bcards.filter(
@@ -356,6 +360,8 @@
       )
       onSelectCard.value = undefined
       cycle.action--
+      const cemetery = table.bcemetery.shift()
+      if (isYlheiry && cemetery) table.bcards.push(cemetery)
     }
 
     if (!table.b2 && target === 'b2') {
@@ -365,6 +371,8 @@
       )
       onSelectCard.value = undefined
       cycle.action--
+      const cemetery = table.bcemetery.shift()
+      if (isYlheiry && cemetery) table.bcards.push(cemetery)
     }
 
     if (!table.b3 && target === 'b3') {
@@ -374,6 +382,8 @@
       )
       onSelectCard.value = undefined
       cycle.action--
+      const cemetery = table.bcemetery.shift()
+      if (isYlheiry && cemetery) table.bcards.push(cemetery)
     }
 
     if (!table.b4 && target === 'b4') {
@@ -383,6 +393,8 @@
       )
       onSelectCard.value = undefined
       cycle.action--
+      const cemetery = table.bcemetery.shift()
+      if (isYlheiry && cemetery) table.bcards.push(cemetery)
     }
   }
 
@@ -555,15 +567,19 @@
   const combatRunner = () => {
     if (table.a1 && table.b1) {
       if (table.a1.atk === table.b1.atk && table.a1.def === table.b1.def) {
+        table.acemetery.unshift(table.a1)
+        table.bcemetery.unshift(table.b1)
         table.b1 = undefined
         table.a1 = undefined
         if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
         if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
       } else if (table.a1.atk >= table.b1.def) {
         // TODO: run else if in one side
+        table.bcemetery.unshift(table.b1)
         table.b1 = undefined
         if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
       } else if (table.b1.atk >= table.a1.def) {
+        table.acemetery.unshift(table.a1)
         table.a1 = undefined
         if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
       } else {
@@ -580,14 +596,18 @@
 
     if (table.a2 && table.b2) {
       if (table.a2.atk === table.b2.atk && table.a2.def === table.b2.def) {
+        table.acemetery.unshift(table.a2)
+        table.bcemetery.unshift(table.b2)
         table.b2 = undefined
         table.a2 = undefined
         if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
         if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
       } else if (table.a2.atk >= table.b2.def) {
+        table.bcemetery.unshift(table.b2)
         table.b2 = undefined
         if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
       } else if (table.b2.atk >= table.a2.def) {
+        table.acemetery.unshift(table.a2)
         table.a2 = undefined
         if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
       } else {
@@ -604,14 +624,18 @@
 
     if (table.a3 && table.b3) {
       if (table.a3.atk === table.b3.atk && table.a3.def === table.b3.def) {
+        table.acemetery.unshift(table.a3)
+        table.bcemetery.unshift(table.b3)
         table.b3 = undefined
         table.a3 = undefined
         if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
         if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
       } else if (table.a3.atk >= table.b3.def) {
+        table.bcemetery.unshift(table.b3)
         table.b3 = undefined
         if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
       } else if (table.b3.atk >= table.a3.def) {
+        table.acemetery.unshift(table.a3)
         table.a3 = undefined
         if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
       } else {
@@ -628,14 +652,18 @@
 
     if (table.a4 && table.b4) {
       if (table.a4.atk === table.b4.atk && table.a4.def === table.b4.def) {
+        table.acemetery.unshift(table.a4)
+        table.bcemetery.unshift(table.b4)
         table.b4 = undefined
         table.a4 = undefined
         if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
         if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
       } else if (table.a4.atk >= table.b4.def) {
+        table.bcemetery.unshift(table.b4)
         table.b4 = undefined
         if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
       } else if (table.b4.atk >= table.a4.def) {
+        table.acemetery.unshift(table.a4)
         table.a4 = undefined
         if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
       } else {

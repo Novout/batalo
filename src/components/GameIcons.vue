@@ -6,6 +6,7 @@
   <IconValv v-else-if="props.icon === 'valv'" class="h-20 w-20" />
   <IconFervent v-else-if="props.icon === 'fervent'" class="h-20 w-20" />
   <IconDesolate v-else-if="props.icon === 'desolate'" class="h-20 w-20" />
+  <IconBear v-else-if="props.icon === 'ylheiry'" class="h-20 w-20" />
   <p v-else></p>
 </template>
 
