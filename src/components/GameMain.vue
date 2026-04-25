@@ -475,6 +475,7 @@
     const isZaytek = card.name === 'Zaytek'
     const isLastTree = card.name === 'Last Tree'
     const isSair = card.name === "Sair's Lackeys"
+    const isFaztaylhi = card.name === 'Faztaylhi'
 
     if (isZaytek) {
       if (table.a1) card.def++
@@ -499,6 +500,12 @@
       if (isSair) {
         table.acards.shift()
         table.acards.shift()
+      }
+      if (isFaztaylhi) {
+        const card = table.bdeck.pop()
+        if (card) table.bcards.push(card)
+        const card2 = table.bdeck.pop()
+        if (card2) table.bcards.push(card2)
       }
     }
 
@@ -697,6 +704,12 @@
       if (card.name === "Sair's Lackeys") {
         table.bcards.shift()
         table.bcards.shift()
+      }
+      if (card.name === 'Faztaylhi') {
+        const card1 = table.adeck.pop()
+        if (card1) table.acards.push(card1)
+        const card2 = table.adeck.pop()
+        if (card2) table.acards.push(card2)
       }
     }
 

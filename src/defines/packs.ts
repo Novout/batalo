@@ -275,6 +275,17 @@ export const thorinemCards = (): Card[] => {
     def: 1,
   } as Card
 
+  const faztaylhi = {
+    name: 'Faztaylhi',
+    icon: 'regroup',
+    max: 2,
+    description: 'Draw two cards when you enter the field.',
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 1,
+    def: 5,
+  } as Card
+
   rawCards.push(last_tree)
   rawCards.push(support_nekro)
   rawCards.push(atashar)
@@ -282,6 +293,7 @@ export const thorinemCards = (): Card[] => {
   rawCards.push(sair)
   rawCards.push(relicter)
   rawCards.push(calino)
+  rawCards.push(faztaylhi)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {
