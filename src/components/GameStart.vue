@@ -5,7 +5,7 @@
     <div class="flex gap-5 w-full items-center">
       <p class="text-3xl">{{ $t('menu.playerDeck') }}</p>
       <select
-        class="p-2 font-poppins text-md"
+        class="p-2 font-poppins text-lg"
         name="size"
         v-model="OPTIONS.playerDeck"
       >
@@ -18,7 +18,7 @@
     <div class="flex gap-5 w-full items-center">
       <p class="text-3xl">{{ $t('menu.botDeck') }}</p>
       <select
-        class="p-2 font-poppins text-md"
+        class="p-2 font-poppins text-lg"
         name="size"
         v-model="OPTIONS.botDeck"
       >
@@ -28,9 +28,13 @@
         <option>Rouanir Intirl</option>
       </select>
     </div>
-    <div class="flex gap-2 w-full">
+    <div class="flex items-center gap-2 w-full">
       <h2>Life</h2>
-      <input class="text-xl" type="number" v-model="OPTIONS.lifeStart" />
+      <input
+        class="text-xl h-8 w-10"
+        type="number"
+        v-model="OPTIONS.lifeStart"
+      />
     </div>
     <button @click="emit('start')" class="px-4 py-2 text-lg">
       {{ $t('menu.start') }}
