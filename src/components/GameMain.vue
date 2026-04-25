@@ -68,7 +68,7 @@
         </div>
       </div>
       <div class="flex gap-25 w-full justify-center items-center">
-        <div class="flex gap-2">
+        <div :class="[cycle.action > 0 ? 'border-t-6 border-l-0 border-r-0 border-b-0 border-green border-solid' : '']" class="flex gap-2">
           <GameCardHand
             v-for="(card, index) in table.bcards"
             :key="index"
