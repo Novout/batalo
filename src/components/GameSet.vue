@@ -244,9 +244,9 @@
           !table.b3 &&
           !table.b4 &&
           (table.a1?.name === 'Melankolio' ||
-            (table.a2?.name === 'Melankolio' ||
-              table.a3?.name === 'Melankolio' ||
-              table.a4?.name === 'Melankolio'))
+            table.a2?.name === 'Melankolio' ||
+            table.a3?.name === 'Melankolio' ||
+            table.a4?.name === 'Melankolio')
         ) {
           table.blife = 0
 
@@ -584,9 +584,9 @@
       !table.a3 &&
       !table.a4 &&
       (table.b1?.name === 'Melankolio' ||
-        (table.b2?.name === 'Melankolio' ||
-          table.b3?.name === 'Melankolio' ||
-          table.b4?.name === 'Melankolio'))
+        table.b2?.name === 'Melankolio' ||
+        table.b3?.name === 'Melankolio' ||
+        table.b4?.name === 'Melankolio')
     ) {
       table.alife = 0
 
