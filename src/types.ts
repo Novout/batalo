@@ -17,6 +17,7 @@ export type Icon =
   | 'totem2'
   | 'dragon'
   | 'group'
+  | 'shadow'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -35,6 +36,7 @@ export type CardName =
   | 'Atashar'
   | 'Hidralon Telono'
   | "Sair's Lackeys"
+  | 'Relicter'
 
 export interface Card {
   id?: string

@@ -249,11 +249,27 @@ export const thorinemCards = (): Card[] => {
     def: 3,
   } as Card
 
+  const relicter = {
+    name: "Relicter",
+    icon: 'shadow',
+    max: 2,
+    description:
+      "If it survives more than two turns of combat on the field, a copy of Seto enters the game.",
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 3,
+    def: 3,
+    extra: {
+      survive: 0
+    }
+  } as Card
+
   rawCards.push(last_tree)
   rawCards.push(support_nekro)
   rawCards.push(atashar)
   rawCards.push(hidralon_telono)
   rawCards.push(sair)
+  rawCards.push(relicter)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

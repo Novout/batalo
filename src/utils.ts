@@ -20,3 +20,7 @@ export const shuffle = (array: any[]) => {
 
   return array
 }
+
+export const chance = () => {
+  return Math.floor(Math.random() * 2) === 0
+}

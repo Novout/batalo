@@ -224,6 +224,67 @@
         const nextPlayerCard = table.bdeck.pop()
         if (nextPlayerCard) table.bcards.push(nextPlayerCard)
 
+        if (table.a1?.name === 'Relicter') table.a1.extra.survive++
+        if (table.a2?.name === 'Relicter') table.a2.extra.survive++
+        if (table.a3?.name === 'Relicter') table.a3.extra.survive++
+        if (table.a4?.name === 'Relicter') table.a4.extra.survive++
+
+        if (table.b1?.name === 'Relicter') table.b1.extra.survive++
+        if (table.b2?.name === 'Relicter') table.b2.extra.survive++
+        if (table.b3?.name === 'Relicter') table.b3.extra.survive++
+        if (table.b4?.name === 'Relicter') table.b4.extra.survive++
+
+        let setRelicter = undefined
+        if (table.a1?.name === 'Relicter' && table.a1.extra.survive >= 2) {
+          table.a1.extra.survive = 0
+          setRelicter = table.a1
+        }
+        if (table.a2?.name === 'Relicter' && table.a2.extra.survive >= 2) {
+          table.a2.extra.survive = 0
+          setRelicter = table.a2
+        }
+        if (table.a3?.name === 'Relicter' && table.a3.extra.survive >= 2) {
+          table.a3.extra.survive = 0
+          setRelicter = table.a3
+        }
+        if (table.a4?.name === 'Relicter' && table.a4.extra.survive >= 2) {
+          table.a4.extra.survive = 0
+          setRelicter = table.a4
+        }
+
+        if(setRelicter) {
+          if(!table.a1) table.a1 = setRelicter
+          else if(!table.a2) table.a2 = setRelicter
+          else if(!table.a3) table.a3 = setRelicter
+          else if(!table.a4) table.a4 = setRelicter
+        }
+        
+        setRelicter = undefined
+
+        if (table.b1?.name === 'Relicter' && table.b1.extra.survive >= 2) {
+          table.b1.extra.survive = 0
+          setRelicter = table.b1
+        }
+        if (table.b2?.name === 'Relicter' && table.b2.extra.survive >= 2) {
+          table.b2.extra.survive = 0
+          setRelicter = table.b2
+        }
+        if (table.b3?.name === 'Relicter' && table.b3.extra.survive >= 2) {
+          table.b3.extra.survive = 0
+          setRelicter = table.b3
+        }
+        if (table.b4?.name === 'Relicter' && table.b4.extra.survive >= 2) {
+          table.b4.extra.survive = 0
+          setRelicter = table.b4
+        }
+
+        if(setRelicter) {
+          if(!table.b1) table.b1 = setRelicter
+          else if(!table.b2) table.b2 = setRelicter
+          else if(!table.b3) table.b3 = setRelicter
+          else if(!table.b4) table.b4 = setRelicter
+        }
+
         if (table.a1?.name === 'Atashar') table.atotem++
         if (table.a2?.name === 'Atashar') table.atotem++
         if (table.a3?.name === 'Atashar') table.atotem++
