@@ -22,7 +22,7 @@
         <IconTotem2 v-else-if="props.content?.skills?.totem" class="h-4 w-4" />
       </div>
       <div class="flex items-center gap-2">
-        <IconShield v-if="props.content" class="h-4 w-4" />
+        <IconHeart v-if="props.content" class="h-4 w-4" />
         <p>{{ props.content?.def }}</p>
       </div>
     </div>
