@@ -10,6 +10,7 @@ export type Icon =
   | 'desolate'
   | 'ylheiry'
   | 'melankolio'
+  | 'smoke'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -22,6 +23,7 @@ export type CardName =
   | 'The Desolate'
   | 'Ylheiry'
   | 'Melankolio'
+  | 'Zaytek'
 
 export interface Card {
   id?: string

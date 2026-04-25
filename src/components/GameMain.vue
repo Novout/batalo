@@ -379,6 +379,14 @@
     }
 
     const isYlheiry = onSelectCard.value?.name === 'Ylheiry'
+    const isZaytek = onSelectCard.value?.name === 'Zaytek'
+
+    if (isZaytek) {
+      if(table.a1) onSelectCard.value!.def++
+      if(table.a2) onSelectCard.value!.def++
+      if(table.a3) onSelectCard.value!.def++
+      if(table.a4) onSelectCard.value!.def++
+    }
 
     if (!table.b1 && target === 'b1') {
       table.b1 = onSelectCard.value
@@ -429,6 +437,15 @@
     // TODO: Valv, V Immutable action
     const target = random(['a1', 'a2', 'a3', 'a4'])
     const card = random(table.acards) as Card
+
+    const isZaytek = card.name === 'Zaytek'
+
+    if (isZaytek) {
+      if(table.b1) card.def++
+      if(table.b2) card.def++
+      if(table.b3) card.def++
+      if(table.b4) card.def++
+    }
 
     if (table.amain?.name === 'V Xwyyyw' && table.amain.extra.points > 3) {
       table.blife -= Number((table.amain.extra.points / 2).toFixed(0))

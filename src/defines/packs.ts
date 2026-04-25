@@ -122,12 +122,24 @@ export const gyniCards = (): Card[] => {
     def: 5,
   } as Card
 
+  const zaytek = {
+    name: 'Zaytek',
+    icon: 'smoke',
+    max: 2,
+    description: 'Upon entering the field, gain 1 additional HP for each enemy card on the field.',
+    textColor: 'white',
+    backgroundColor: 'blue',
+    atk: 3,
+    def: 3,
+  } as Card
+
   rawCards.push(empty_skeletion1)
   rawCards.push(valv)
   rawCards.push(raptor)
   rawCards.push(desolate)
   rawCards.push(ylheiry)
   rawCards.push(melankolio)
+  rawCards.push(zaytek)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {
