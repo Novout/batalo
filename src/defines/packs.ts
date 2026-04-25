@@ -290,7 +290,8 @@ export const thorinemCards = (): Card[] => {
     name: 'Faded',
     icon: 'lion',
     max: 1,
-    description: 'Upon entering, it deals one damage to all enemy units on the field.',
+    description:
+      'Upon entering, it deals one damage to all enemy units on the field.',
     textColor: 'white',
     backgroundColor: 'green',
     atk: 4,

@@ -6,7 +6,7 @@
       color: content?.textColor,
     }"
     @click="emit('select', props.content)"
-    class="w-35 transform hover:transform-translate-y--10 transition-all p-2 flex border-3 hover:border-black cursor-pointer border-solid border-none cursor-pointer flex-col items-center rounded-md"
+    class="lg:w-35 w-30 transform hover:transform-translate-y--10 transition-all p-2 flex border-3 hover:border-black cursor-pointer border-solid border-none cursor-pointer flex-col items-center rounded-md"
   >
     <div class="flex justify-between w-full text-lg">
       <div class="flex items-center gap-2">

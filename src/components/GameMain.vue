@@ -10,9 +10,9 @@
     v-else
     class="flex overflow-y-auto justify-between items-center flex-col w-full h-100vh"
   >
-    <div class="flex gap-25 w-full justify-center items-center">
+    <div class="flex flex-wrap gap-25 w-full justify-center items-center">
       <GameCardMaster type="bot" :content="table.amain" />
-      <div class="flex gap-2">
+      <div class="flex gap-2 flex-wrap">
         <GameCardMain :content="table.a1" />
         <GameCardMain :content="table.a2" />
         <GameCardMain :content="table.a3" />
@@ -37,7 +37,9 @@
       />
     </div>
     <div class="flex flex-col w-full">
-      <div class="flex gap-25 w-full justify-center items-center">
+      <div
+        class="flex flex-wrap-reverse gap-25 w-full justify-center items-center"
+      >
         <GameCardMaster
           type="player"
           @select="() => clickMaster()"
@@ -47,7 +49,7 @@
           :class="[
             onSelectCard ? `border-5 rounded-lg border-red border-solid` : '',
           ]"
-          class="flex gap-2"
+          class="flex flex-wrap gap-2"
         >
           <GameCardMain
             @select="() => setSelectCardInDrop('b1')"
@@ -74,7 +76,7 @@
               ? 'border-t-6 border-l-0 border-r-0 border-b-0 border-green border-solid'
               : '',
           ]"
-          class="flex gap-2"
+          class="flex flex-wrap gap-2"
         >
           <GameCardHand
             v-for="(card, index) in table.bcards"

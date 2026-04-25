@@ -4,7 +4,7 @@
       backgroundColor: content?.backgroundColor,
       color: content?.textColor,
     }"
-    class="w-60 h-80 p-2 rounded-md flex flex-col items-center justify-center"
+    class="w-40 h-80 lg:w-60 lg:h-80 p-2 rounded-md flex flex-col items-center justify-center"
     @click="emit('select')"
     :class="[
       props.content === undefined ? 'border-1.5 border-dashed border-gray' : '',
