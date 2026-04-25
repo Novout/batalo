@@ -353,7 +353,35 @@ export const rouanirCards = (): Card[] => {
     skills: {},
   } as Card
 
+  const drezor = {
+    name: 'Drezor',
+    icon: 'dragon',
+    max: 2,
+    description: 'This unit has the capability to fly.',
+    textColor: 'black',
+    backgroundColor: 'yellow',
+    atk: 2,
+    def: 3,
+    skills: {
+      fly: true,
+    },
+  } as Card
+
+  const tarr = {
+    name: 'Tarr Adél',
+    icon: 'tarr',
+    max: 2,
+    description: "Upon entering the field, it destroys the opponent's card.",
+    textColor: 'black',
+    backgroundColor: 'yellow',
+    atk: 1,
+    def: 1,
+    skills: {},
+  } as Card
+
   rawCards.push(batanto)
+  rawCards.push(drezor)
+  rawCards.push(tarr)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

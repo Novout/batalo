@@ -518,6 +518,7 @@
     const isFaztaylhi = card.name === 'Faztaylhi'
     const isFaded = card.name === 'Faded'
     const isBatanto = card.name === 'Batanto'
+    const isTarrAdel = card.name === 'Tarr Adél'
 
     if (isZaytek) {
       if (table.a1) card.def++
@@ -576,6 +577,9 @@
           if (table.a4.def <= 0) table.a4 = undefined
         }
       }
+      if(isTarrAdel) {
+        table.a1 = undefined
+      }
     }
 
     if (!table.b2 && target === 'b2') {
@@ -617,6 +621,9 @@
           table.a4.def -= 1
           if (table.a4.def <= 0) table.a4 = undefined
         }
+      }
+      if(isTarrAdel) {
+        table.a2 = undefined
       }
     }
 
@@ -660,6 +667,9 @@
           if (table.a4.def <= 0) table.a4 = undefined
         }
       }
+      if(isTarrAdel) {
+        table.a3 = undefined
+      }
     }
 
     if (!table.b4 && target === 'b4') {
@@ -702,6 +712,9 @@
           if (table.a4.def <= 0) table.a4 = undefined
         }
       }
+      if(isTarrAdel) {
+        table.a4 = undefined
+      }
     }
   }
 
@@ -721,6 +734,7 @@
     }
 
     const isZaytek = card.name === 'Zaytek'
+    const isTarrAdel = card.name === 'Tarr Adél'
 
     if (isZaytek) {
       if (table.b1) card.def++
@@ -889,6 +903,9 @@
           if (table.b4.def <= 0) table.b4 = undefined
         }
       }
+      if(isTarrAdel) {
+        table.b1 = undefined
+      }
     }
 
     if (!table.a2 && target === 'a2') {
@@ -906,6 +923,9 @@
       if (card.name === "Sair's Lackeys") {
         table.bcards.shift()
         table.bcards.shift()
+      }
+      if (isTarrAdel) {
+        table.b2 = undefined
       }
     }
 
@@ -925,6 +945,9 @@
         table.bcards.shift()
         table.bcards.shift()
       }
+      if(isTarrAdel) {
+        table.b3 = undefined
+      }
     }
 
     if (!table.a4 && target === 'a4') {
@@ -942,6 +965,9 @@
       if (card.name === "Sair's Lackeys") {
         table.bcards.shift()
         table.bcards.shift()
+      }
+      if(isTarrAdel) {
+        table.b4 = undefined
       }
     }
 
