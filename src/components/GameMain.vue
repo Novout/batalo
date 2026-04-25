@@ -519,12 +519,20 @@
     const isFaded = card.name === 'Faded'
     const isBatanto = card.name === 'Batanto'
     const isTarrAdel = card.name === 'Tarr Adél'
+    const isForone = card.name === 'Forone'
 
     if (isZaytek) {
       if (table.a1) card.def++
       if (table.a2) card.def++
       if (table.a3) card.def++
       if (table.a4) card.def++
+    }
+
+    if (isForone) {
+      if (table.b1) card.def++
+      if (table.b2) card.def++
+      if (table.b3) card.def++
+      if (table.b4) card.def++
     }
 
     if (isLastTree) {
@@ -735,12 +743,20 @@
 
     const isZaytek = card.name === 'Zaytek'
     const isTarrAdel = card.name === 'Tarr Adél'
+    const isForone = card.name === 'Forone'
 
     if (isZaytek) {
       if (table.b1) card.def++
       if (table.b2) card.def++
       if (table.b3) card.def++
       if (table.b4) card.def++
+    }
+
+    if (isForone) {
+      if (table.a1) card.def++
+      if (table.a2) card.def++
+      if (table.a3) card.def++
+      if (table.a4) card.def++
     }
 
     if (

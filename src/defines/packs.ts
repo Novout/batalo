@@ -391,10 +391,23 @@ export const rouanirCards = (): Card[] => {
     skills: {},
   } as Card
 
+  const forone = {
+    name: 'Forone',
+    icon: 'tiger',
+    max: 2,
+    description: 'Gains 1 life for each allied card in play.',
+    textColor: 'black',
+    backgroundColor: 'yellow',
+    atk: 2,
+    def: 3,
+    skills: {},
+  } as Card
+
   rawCards.push(batanto)
   rawCards.push(drezor)
   rawCards.push(tarr)
   rawCards.push(haino)
+  rawCards.push(forone)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

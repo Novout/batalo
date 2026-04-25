@@ -22,6 +22,7 @@
   <IconRouanir v-else-if="props.icon === 'rouanir'" class="h-20 w-20" />
   <IconTarr v-else-if="props.icon === 'tarr'" class="h-20 w-20" />
   <IconBarbarian v-else-if="props.icon === 'barbarian'" class="h-20 w-20" />
+  <IconTiger v-else-if="props.icon === 'tiger'" class="h-20 w-20" />
   <p v-else></p>
 </template>
 

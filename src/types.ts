@@ -24,6 +24,7 @@ export type Icon =
   | 'rouanir'
   | 'tarr'
   | 'barbarian'
+  | 'tiger'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -51,6 +52,7 @@ export type CardName =
   | 'Drezor'
   | 'Tarr Adél'
   | 'Haino Melankolio'
+  | 'Forone'
 
 export interface Card {
   id?: string

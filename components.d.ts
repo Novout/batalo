@@ -40,6 +40,7 @@ declare module 'vue' {
     IconSnow: typeof import('./src/components/icons/IconSnow.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTarr: typeof import('./src/components/icons/IconTarr.vue')['default']
+    IconTiger: typeof import('./src/components/icons/IconTiger.vue')['default']
     IconTotem: typeof import('./src/components/icons/IconTotem.vue')['default']
     IconTotem2: typeof import('./src/components/icons/IconTotem2.vue')['default']
     IconTree: typeof import('./src/components/icons/IconTree.vue')['default']
