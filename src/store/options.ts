@@ -6,6 +6,7 @@ export const useOptionsStore = defineStore('options', {
     return {
       playerDeck: 'Random',
       botDeck: 'Random',
+      lifeStart: 12,
     }
   },
 })

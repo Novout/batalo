@@ -28,6 +28,10 @@
         <option>Rouanir Intirl</option>
       </select>
     </div>
+    <div class="flex gap-2 w-full">
+      <h2>Life</h2>
+      <input class="text-xl" type="number" v-model="OPTIONS.lifeStart" />
+    </div>
     <button @click="emit('start')" class="px-4 py-2 text-lg">
       {{ $t('menu.start') }}
     </button>

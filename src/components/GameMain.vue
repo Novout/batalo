@@ -140,7 +140,7 @@
 
   const table = reactive({
     amain: undefined as Maybe<CardChampion>,
-    alife: 12,
+    alife: OPTIONS.lifeStart,
     atotem: 0,
     a1: undefined as Maybe<Card>,
     a2: undefined as Maybe<Card>,
@@ -150,7 +150,7 @@
     acards: [] as Card[],
     acemetery: [] as Card[],
     bmain: undefined as Maybe<CardChampion>,
-    blife: 12,
+    blife: OPTIONS.lifeStart,
     btotem: 0,
     b1: undefined as Maybe<Card>,
     b2: undefined as Maybe<Card>,
@@ -168,6 +168,14 @@
     roundAction: 0,
     action: 1,
   })
+
+  watch(
+    computed(() => OPTIONS.lifeStart),
+    (value) => {
+      table.alife = value
+      table.blife = value
+    },
+  )
 
   watch(
     [computed(() => table.alife), computed(() => table.blife)],
