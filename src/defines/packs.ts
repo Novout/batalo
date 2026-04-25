@@ -218,7 +218,9 @@ export const thorinemCards = (): Card[] => {
     backgroundColor: 'green',
     atk: 0,
     def: 5,
-    skills: {},
+    skills: {
+      totem: true
+    },
   } as Card
 
   const hidralon_telono = {
@@ -228,9 +230,11 @@ export const thorinemCards = (): Card[] => {
     description: '',
     textColor: 'white',
     backgroundColor: 'green',
-    atk: 3,
-    def: 3,
-    skills: {},
+    atk: 2,
+    def: 2,
+    skills: {
+      fly: true
+    },
   } as Card
 
   rawCards.push(last_tree)
