@@ -475,7 +475,7 @@
     cycle.round++
   }
 
-  const setSelectCardInDrop = (target: string) => {
+  const setSelectCardInDrop = (target: 'b1' | 'b2' | 'b3' | 'b4') => {
     const isVek = onSelectCard.value?.name === 'Vek'
 
     if (!cycle.action) {
@@ -569,6 +569,14 @@
     const isBigEffect = card.name === 'Big Effect'
     const isNovout = card.name === 'Novout'
     const isSarta = card.name === 'Sarta'
+    const isAdrino = card.name === 'Adrino'
+    const isUrdo = card.name === 'Urdo'
+
+    if (isUrdo) {
+      const value = dice('d20')
+
+      card.atk = Number((value / 2).toFixed(0))
+    }
 
     if (isZaytek) {
       if (table.a1) card.def++
@@ -639,6 +647,9 @@
       onSelectCard.value = undefined
       cycle.action--
       const cemetery = table.bcemetery.shift()
+      if (isAdrino) {
+        if (table.a1 && table.a1.skills.fly) table.a1 = undefined
+      }
       if (isYlheiry && cemetery) table.bcards.push(cemetery)
       if (isSair) {
         table.acards.shift()
@@ -690,6 +701,9 @@
       onSelectCard.value = undefined
       cycle.action--
       const cemetery = table.bcemetery.shift()
+      if (isAdrino) {
+        if (table.a2 && table.a2.skills.fly) table.a2 = undefined
+      }
       if (isYlheiry && cemetery) table.bcards.push(cemetery)
       if (isSair) {
         table.acards.shift()
@@ -735,6 +749,9 @@
       onSelectCard.value = undefined
       cycle.action--
       const cemetery = table.bcemetery.shift()
+      if (isAdrino) {
+        if (table.a3 && table.a3.skills.fly) table.a3 = undefined
+      }
       if (isYlheiry && cemetery) table.bcards.push(cemetery)
       if (isSair) {
         table.acards.shift()
@@ -780,6 +797,9 @@
       onSelectCard.value = undefined
       cycle.action--
       const cemetery = table.bcemetery.shift()
+      if (isAdrino) {
+        if (table.a4 && table.a4.skills.fly) table.a4 = undefined
+      }
       if (isYlheiry && cemetery) table.bcards.push(cemetery)
       if (isSair) {
         table.acards.shift()
@@ -1028,6 +1048,9 @@
       ) {
         botAction()
       }
+      if (card.name === 'Adrino') {
+        if (table.b1 && table.b1.skills.fly) table.b1 = undefined
+      }
       if (card.name === "Sair's Lackeys") {
         table.bcards.shift()
         table.bcards.shift()
@@ -1072,6 +1095,9 @@
         else if (!table.b4) table.b4 = desolate
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
+      if (card.name === 'Adrino') {
+        if (table.b2 && table.b2.skills.fly) table.b2 = undefined
+      }
       if (card.name === 'Last Tree') botAction()
       if (card.name === "Sair's Lackeys") {
         table.bcards.shift()
@@ -1093,6 +1119,9 @@
         else if (!table.b4) table.b4 = desolate
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
+      if (card.name === 'Adrino') {
+        if (table.b3 && table.b3.skills.fly) table.b3 = undefined
+      }
       if (card.name === 'Last Tree') botAction()
       if (card.name === "Sair's Lackeys") {
         table.bcards.shift()
@@ -1114,6 +1143,9 @@
         else if (!table.b4) table.b4 = desolate
       }
       table.acards = table.acards.filter((item) => item.id !== card.id)
+      if (card.name === 'Adrino') {
+        if (table.b4 && table.b4.skills.fly) table.b4 = undefined
+      }
       if (card.name === 'Last Tree') botAction()
       if (card.name === "Sair's Lackeys") {
         table.bcards.shift()
