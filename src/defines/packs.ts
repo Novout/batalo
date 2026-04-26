@@ -277,6 +277,7 @@ export const thorinemCards = (): Card[] => {
     backgroundColor: 'green',
     atk: 3,
     def: 3,
+    skills: {},
   } as Card
 
   const relicter = {
@@ -292,6 +293,7 @@ export const thorinemCards = (): Card[] => {
     extra: {
       survive: 0,
     },
+    skills: {},
   } as Card
 
   const calino = {
@@ -303,6 +305,7 @@ export const thorinemCards = (): Card[] => {
     backgroundColor: 'green',
     atk: 4,
     def: 1,
+    skills: {},
   } as Card
 
   const faztaylhi = {
@@ -314,6 +317,7 @@ export const thorinemCards = (): Card[] => {
     backgroundColor: 'green',
     atk: 1,
     def: 5,
+    skills: {},
   } as Card
 
   const faded = {
@@ -326,6 +330,19 @@ export const thorinemCards = (): Card[] => {
     backgroundColor: 'green',
     atk: 4,
     def: 6,
+    skills: {},
+  } as Card
+
+  const sarta = {
+    name: 'Sarta',
+    icon: 'group',
+    max: 2,
+    description: 'Its attack is half the life of its Life Points.',
+    textColor: 'white',
+    backgroundColor: 'green',
+    atk: 1,
+    def: 3,
+    skills: {},
   } as Card
 
   rawCards.push(last_tree)
@@ -337,6 +354,7 @@ export const thorinemCards = (): Card[] => {
   rawCards.push(calino)
   rawCards.push(faztaylhi)
   rawCards.push(faded)
+  rawCards.push(sarta)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

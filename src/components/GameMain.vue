@@ -568,6 +568,7 @@
     const isForone = card.name === 'Forone'
     const isBigEffect = card.name === 'Big Effect'
     const isNovout = card.name === 'Novout'
+    const isSarta = card.name === 'Sarta'
 
     if (isZaytek) {
       if (table.a1) card.def++
@@ -596,6 +597,10 @@
 
     if (isLastTree) {
       cycle.action++
+    }
+
+    if (isSarta) {
+      card.atk = Number((table.blife / 2).toFixed(0))
     }
 
     if (isNovout) {
@@ -824,6 +829,7 @@
     const isForone = card.name === 'Forone'
     const isBigEffect = card.name === 'Big Effect'
     const isNovout = card.name === 'Novout'
+    const isSarta = card.name === 'Sarta'
 
     if (isZaytek) {
       if (table.b1) card.def++
@@ -848,6 +854,10 @@
       if (table.a2) card.def++
       if (table.a3) card.def++
       if (table.a4) card.def++
+    }
+
+    if (isSarta) {
+      card.atk = Number((table.alife / 2).toFixed(0))
     }
 
     if (isNovout) {

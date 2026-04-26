@@ -67,6 +67,7 @@ export type CardName =
   | 'Urdo'
   | 'Sataya'
   | 'Novout'
+  | 'Sarta'
 
 export interface Card {
   id?: string
