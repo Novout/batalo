@@ -498,7 +498,7 @@ export const oldWorldCards = (): Card[] => {
     name: 'Riturno',
     icon: 'bear',
     max: 3,
-    description: '',
+    description: 'Enables the Vek card effect.',
     textColor: 'black',
     backgroundColor: 'beige',
     atk: 2,
@@ -510,11 +510,11 @@ export const oldWorldCards = (): Card[] => {
     name: 'Urdo',
     icon: 'tiger',
     max: 1,
-    description: '',
+    description: 'Roll id20, where half the value becomes the attack value.',
     textColor: 'black',
     backgroundColor: 'beige',
-    atk: 6,
-    def: 6,
+    atk: 1,
+    def: 5,
     skills: {},
   } as Card
 

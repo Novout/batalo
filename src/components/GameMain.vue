@@ -140,7 +140,7 @@
     thorinemCards,
   } from '../defines/packs'
   import type { Maybe, Card, CardChampion } from '../types'
-  import { random } from '../utils'
+  import { dice, random } from '../utils'
   import { useOptionsStore } from '../store/options'
 
   const onSelectCard = ref<Maybe<Card>>(null)
@@ -830,6 +830,7 @@
     const isBigEffect = card.name === 'Big Effect'
     const isNovout = card.name === 'Novout'
     const isSarta = card.name === 'Sarta'
+    const isUrdo = card.name === 'Urdo'
 
     if (isZaytek) {
       if (table.b1) card.def++
@@ -877,6 +878,12 @@
         card.atk = table.b4.atk
         card.def = table.b4.def
       }
+    }
+
+    if (isUrdo) {
+      const value = dice('d20')
+
+      card.atk = Number((value / 2).toFixed(0))
     }
 
     if (

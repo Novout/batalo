@@ -24,3 +24,7 @@ export const shuffle = (array: any[]) => {
 export const chance = () => {
   return Math.floor(Math.random() * 2) === 0
 }
+
+export const dice = (target: 'd20') => {
+  return target === 'd20' ? Math.floor(1 + Math.random() * 20) : 1
+}
