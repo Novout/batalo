@@ -438,7 +438,7 @@ export const rouanirCards = (): Card[] => {
     name: 'Adrino',
     icon: 'mage',
     max: 2,
-    description: '',
+    description: "Destroys the opponent's card upon entering the field if it is a Flying-type card.",
     textColor: 'black',
     backgroundColor: 'yellow',
     atk: 4,
