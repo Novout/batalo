@@ -127,6 +127,7 @@
     champtions,
     external,
     gyniCards,
+    oldWorldCards,
     rouanirCards,
     thorinemCards,
   } from '../defines/packs'
@@ -190,13 +191,15 @@
     const option = OPTIONS.playerDeck.toLowerCase()
 
     if (option === 'random') {
-      const deck = random(['gyni', 'thorinem', 'rouanir intirl'])
+      const deck = random(['gyni', 'thorinem', 'rouanir intirl', 'old world'])
       table.bdeck =
         deck === 'gyni'
           ? gyniCards()
           : deck === 'rouanir intirl'
             ? rouanirCards()
-            : thorinemCards()
+            : deck === 'old world'
+              ? oldWorldCards()
+              : thorinemCards()
       table.bmain = champtions(deck as 'gyni' | 'thorinem' | 'rouanir intirl')
     } else {
       table.bdeck =
@@ -204,7 +207,9 @@
           ? gyniCards()
           : option === 'rouanir intirl'
             ? rouanirCards()
-            : thorinemCards()
+            : option === 'old world'
+              ? oldWorldCards()
+              : thorinemCards()
       table.bmain = champtions(option as any)
     }
     for (let i = 0; i < 6; i++) {
@@ -442,9 +447,21 @@
   }
 
   const setSelectCardInDrop = (target: string) => {
+    const isVek = onSelectCard.value?.name === 'Vek'
+
     if (!cycle.action) {
-      onSelectCard.value = undefined
-      return
+      if (
+        isVek &&
+        (table.b1?.name === 'Riturno' ||
+          table.b2?.name === 'Riturno' ||
+          table.b3?.name === 'Riturno' ||
+          table.b4?.name === 'Riturno')
+      ) {
+        cycle.action++
+      } else {
+        onSelectCard.value = undefined
+        return
+      }
     }
 
     if (cycle.roundSet === 'bot' || cycle.roundSet === 'combat') {
@@ -915,6 +932,16 @@
       table.acards = table.acards.filter((item) => item.id !== card.id)
 
       if (card.name === 'Last Tree') botAction()
+      // TODO: resolve in riturno actually play card
+      if (
+        card.name === 'Vek' &&
+        (table.a1?.name === 'Riturno' ||
+          table.a2?.name === 'Riturno' ||
+          table.a3?.name === 'Riturno' ||
+          table.a4?.name === 'Riturno')
+      ) {
+        botAction()
+      }
       if (card.name === "Sair's Lackeys") {
         table.bcards.shift()
         table.bcards.shift()

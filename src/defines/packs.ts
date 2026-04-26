@@ -21,7 +21,7 @@ export const external = () => {
 }
 
 export const champtions = (
-  type: 'gyni' | 'thorinem' | 'rouanir intirl',
+  type: 'gyni' | 'thorinem' | 'rouanir intirl' | 'old world',
 ): Card => {
   return type === 'gyni'
     ? {
@@ -53,18 +53,31 @@ export const champtions = (
           },
           skills: {},
         }
-      : {
-          name: 'Colos',
-          description: `When you suffer 3 or more Hit Points this turn, gain 1 Life Point.`,
-          textColor: 'white',
-          backgroundColor: 'green',
-          atk: 0,
-          def: 0,
-          icon: 'mask' as Icon,
-          max: 1,
-          extra: {},
-          skills: {},
-        }
+      : type === 'old world'
+        ? {
+            name: 'Ayek',
+            description: `Always look at your opponent's hand.`,
+            textColor: 'black',
+            backgroundColor: 'beige',
+            atk: 0,
+            def: 0,
+            icon: 'ayek' as Icon,
+            max: 1,
+            extra: {},
+            skills: {},
+          }
+        : {
+            name: 'Colos',
+            description: `When you suffer 3 or more Hit Points this turn, gain 1 Life Point.`,
+            textColor: 'white',
+            backgroundColor: 'green',
+            atk: 0,
+            def: 0,
+            icon: 'mask' as Icon,
+            max: 1,
+            extra: {},
+            skills: {},
+          }
 }
 
 export const gyniCards = (): Card[] => {
@@ -434,6 +447,49 @@ export const rouanirCards = (): Card[] => {
   rawCards.push(forone)
   rawCards.push(adrino)
   rawCards.push(big)
+
+  rawCards.forEach((card) => {
+    for (let i = 0; i < card.max; i++) {
+      deck.push(card)
+    }
+  })
+
+  deck = deck.map((x) => ({ id: uuidv4(), ...x }))
+
+  return shuffle(deck)
+}
+
+export const oldWorldCards = (): Card[] => {
+  let deck = [] as Card[]
+  const rawCards = []
+
+  const vek = {
+    name: 'Vek',
+    icon: 'chip',
+    max: 6,
+    description:
+      'If you have at least one Riturno card in play, that card does not cost any action points.',
+    textColor: 'black',
+    backgroundColor: 'beige',
+    atk: 2,
+    def: 1,
+    skills: {},
+  } as Card
+
+  const riturno = {
+    name: 'Riturno',
+    icon: 'bear',
+    max: 3,
+    description: '',
+    textColor: 'black',
+    backgroundColor: 'beige',
+    atk: 3,
+    def: 3,
+    skills: {},
+  } as Card
+
+  rawCards.push(vek)
+  rawCards.push(riturno)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

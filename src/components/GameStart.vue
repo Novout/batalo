@@ -13,6 +13,7 @@
         <option>Gyni</option>
         <option>Thorinem</option>
         <option>Rouanir Intirl</option>
+        <option>Old World</option>
       </select>
     </div>
     <div class="flex gap-5 w-full items-center">
@@ -26,6 +27,7 @@
         <option>Gyni</option>
         <option>Thorinem</option>
         <option>Rouanir Intirl</option>
+        <option>Old World</option>
       </select>
     </div>
     <div class="flex items-center gap-2 w-full">

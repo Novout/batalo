@@ -1,0 +1,16 @@
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+  >
+    <!-- Icon from Sharp free icons by Streamline - https://creativecommons.org/licenses/by/4.0/ -->
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M10.25 0v2.75h3.5V0h2.5v2.75h5v5H24v2.5h-2.75v3.5H24v2.5h-2.75v5h-5V24h-2.5v-2.75h-3.5V24h-2.5v-2.75h-5v-5H0v-2.5h2.75v-3.5H0v-2.5h2.75v-5h5V0zm-5 18.75V5.25h13.5v13.5zM16 8H8v8h8z"
+      clipRule="evenodd"
+    />
+  </svg>
+</template>

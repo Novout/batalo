@@ -26,6 +26,9 @@ export type Icon =
   | 'barbarian'
   | 'tiger'
   | 'mage'
+  | 'ayek'
+  | 'chip'
+  | 'bear'
 
 export type CardName =
   | 'Phortem Fervent'
@@ -56,6 +59,11 @@ export type CardName =
   | 'Forone'
   | 'Adrino'
   | 'Big Effect'
+  | 'Ayek'
+  | 'Vek'
+  | 'Riturno'
+  | 'Ellinore'
+  | 'Verko'
 
 export interface Card {
   id?: string
