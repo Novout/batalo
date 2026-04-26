@@ -348,6 +348,30 @@
         if (table.b2?.name === 'Atashar') table.btotem++
         if (table.b3?.name === 'Atashar') table.btotem++
         if (table.b4?.name === 'Atashar') table.btotem++
+
+        const asDefensePlayerTotem =
+          table.a1?.name === 'Defense of The Future' ||
+          table.a2?.name === 'Defense of The Future' ||
+          table.a3?.name === 'Defense of The Future' ||
+          table.a4?.name === 'Defense of The Future'
+        if (asDefensePlayerTotem) {
+          if (table.a1) table.a1.def += 2
+          else if (table.a2) table.a2.def += 2
+          else if (table.a3) table.a3.def += 2
+          else if (table.a4) table.a4.def += 2
+        }
+
+        const asDefenseBotTotem =
+          table.b1?.name === 'Defense of The Future' ||
+          table.b2?.name === 'Defense of The Future' ||
+          table.b3?.name === 'Defense of The Future' ||
+          table.b4?.name === 'Defense of The Future'
+        if (asDefenseBotTotem) {
+          if (table.b1) table.b1.def += 2
+          else if (table.b2) table.b2.def += 2
+          else if (table.b3) table.b3.def += 2
+          else if (table.b4) table.b4.def += 2
+        }
       }
 
       if (cycle.roundAction === 3) {

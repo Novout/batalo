@@ -438,7 +438,8 @@ export const rouanirCards = (): Card[] => {
     name: 'Adrino',
     icon: 'mage',
     max: 2,
-    description: "Destroys the opponent's card upon entering the field if it is a Flying-type card.",
+    description:
+      "Destroys the opponent's card upon entering the field if it is a Flying-type card.",
     textColor: 'black',
     backgroundColor: 'yellow',
     atk: 4,
@@ -510,7 +511,7 @@ export const oldWorldCards = (): Card[] => {
     name: 'Urdo',
     icon: 'tiger',
     max: 1,
-    description: 'Roll id20, where half the value becomes the attack value.',
+    description: 'Roll d20, where half the value becomes the attack value.',
     textColor: 'black',
     backgroundColor: 'beige',
     atk: 1,
@@ -543,11 +544,27 @@ export const oldWorldCards = (): Card[] => {
     skills: {},
   } as Card
 
+  const defense = {
+    name: 'Defense of The Future',
+    icon: 'totem',
+    max: 2,
+    description:
+      "Randomly select a card on the field to heal two hit points after combat. Don't stack",
+    textColor: 'black',
+    backgroundColor: 'beige',
+    atk: 0,
+    def: 6,
+    skills: {
+      totem: true,
+    },
+  } as Card
+
   rawCards.push(vek)
   rawCards.push(riturno)
   rawCards.push(urdo)
   rawCards.push(nvt)
   rawCards.push(sataya)
+  rawCards.push(defense)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

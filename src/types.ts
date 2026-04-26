@@ -68,6 +68,7 @@ export type CardName =
   | 'Sataya'
   | 'Novout'
   | 'Sarta'
+  | 'Defense of The Future'
 
 export interface Card {
   id?: string
