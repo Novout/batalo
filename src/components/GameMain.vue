@@ -208,7 +208,9 @@
             : deck === 'old world'
               ? oldWorldCards()
               : thorinemCards()
-      table.bmain = champtions(deck as 'gyni' | 'thorinem' | 'rouanir intirl')
+      table.bmain = champtions(
+        deck as 'gyni' | 'thorinem' | 'rouanir intirl' | 'old world',
+      )
     } else {
       table.bdeck =
         option === 'gyni'
@@ -226,12 +228,31 @@
     }
 
     if (OPTIONS.botDeck === 'Random') {
-      const deck = random(['gyni', 'thorinem'])
-      table.adeck = deck === 'gyni' ? gyniCards() : thorinemCards()
-      table.amain = champtions(deck as 'gyni' | 'thorinem')
+      const deck = random(['gyni', 'thorinem', 'rouanir intirl', 'old world'])
+      table.adeck =
+        deck === 'gyni'
+          ? gyniCards()
+          : deck === 'rouanir intirl'
+            ? rouanirCards()
+            : deck === 'old world'
+              ? oldWorldCards()
+              : thorinemCards()
+      table.amain = champtions(
+        deck as 'gyni' | 'thorinem' | 'rouanir intirl' | 'old world',
+      )
     } else {
-      table.adeck = OPTIONS.botDeck === 'Gyni' ? gyniCards() : thorinemCards()
-      table.amain = champtions(OPTIONS.botDeck === 'Gyni' ? 'gyni' : 'thorinem')
+      const deck = OPTIONS.botDeck.toLowerCase()
+      table.adeck =
+        deck === 'gyni'
+          ? gyniCards()
+          : deck === 'rouanir intirl'
+            ? rouanirCards()
+            : deck === 'old world'
+              ? oldWorldCards()
+              : thorinemCards()
+      table.amain = champtions(
+        deck as 'gyni' | 'thorinem' | 'rouanir intirl' | 'old world',
+      )
     }
     for (let i = 0; i < 6; i++) {
       const card = table.adeck.pop()

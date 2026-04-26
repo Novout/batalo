@@ -30,7 +30,7 @@
     <div class="flex items-center justify-center w-full">
       <GameIcons :icon="props.content?.icon" />
     </div>
-    <p>{{ props.content?.name }}</p>
+    <p class="text-center">{{ props.content?.name }}</p>
     <p v-if="isHovered && !props.ayek" class="text-xs">
       {{ props.content?.description }}
     </p>
