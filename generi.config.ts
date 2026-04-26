@@ -1,5 +1,5 @@
 export default {
-  repository: 'https://github.com/Novout/eksplodo',
+  repository: 'https://github.com/Novout/batalo',
   silent: false,
   commits: 'conventional-commits',
   tag: true,
