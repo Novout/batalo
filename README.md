@@ -7,5 +7,5 @@
 </p>
 
 <h4 align="center">
-<b>A Frost Remains Card Game.</b>
+<b>A Frost Remnants Card Game.</b>
 <h4>
