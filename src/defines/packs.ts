@@ -215,7 +215,7 @@ export const thorinemCards = (): Card[] => {
     name: 'Support Nekro',
     icon: 'support',
     max: 6,
-    description: 'Add 2 life points every two turns.',
+    description: 'Add 3 life points every two turns.',
     textColor: 'white',
     backgroundColor: 'green',
     atk: 1,

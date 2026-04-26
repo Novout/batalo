@@ -361,19 +361,19 @@
 
         if (table.b1 && table.b1.extra?.supportNekroRounds >= 2) {
           table.b1.extra.supportNekroRounds = 0
-          table.blife += 2
+          table.blife += 3
         }
         if (table.b2 && table.b2.extra?.supportNekroRounds >= 2) {
           table.b2.extra.supportNekroRounds = 0
-          table.blife += 2
+          table.blife += 3
         }
         if (table.b3 && table.b3.extra?.supportNekroRounds >= 2) {
           table.b3.extra.supportNekroRounds = 0
-          table.blife += 2
+          table.blife += 3
         }
         if (table.b4 && table.b4.extra?.supportNekroRounds >= 2) {
           table.b4.extra.supportNekroRounds = 0
-          table.blife += 2
+          table.blife += 3
         }
 
         if (table.b1?.name === 'Support Nekro') {
