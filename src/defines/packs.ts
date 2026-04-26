@@ -414,7 +414,7 @@ export const rouanirCards = (): Card[] => {
     name: 'Haino Melankolio',
     icon: 'barbarian',
     max: 2,
-    description: 'Gain +1 attack for collecting batons on the field.',
+    description: 'Gains 1 attack for each Batanto-type ally.',
     textColor: 'black',
     backgroundColor: 'yellow',
     atk: 4,
