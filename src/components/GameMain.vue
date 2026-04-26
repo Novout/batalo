@@ -595,6 +595,14 @@
     const isSarta = card.name === 'Sarta'
     const isAdrino = card.name === 'Adrino'
     const isUrdo = card.name === 'Urdo'
+    const isHaino = card.name === 'Haino Melankolio'
+
+    if (isHaino) {
+      if (table.b1?.name === 'Batanto') card.atk++
+      if (table.b2?.name === 'Batanto') card.atk++
+      if (table.b3?.name === 'Batanto') card.atk++
+      if (table.b4?.name === 'Batanto') card.atk++
+    }
 
     if (isUrdo) {
       const value = dice('d20')
@@ -875,6 +883,14 @@
     const isNovout = card.name === 'Novout'
     const isSarta = card.name === 'Sarta'
     const isUrdo = card.name === 'Urdo'
+    const isHaino = card.name === 'Haino Melankolio'
+
+    if (isHaino) {
+      if (table.a1?.name === 'Batanto') card.atk++
+      if (table.a2?.name === 'Batanto') card.atk++
+      if (table.a3?.name === 'Batanto') card.atk++
+      if (table.a4?.name === 'Batanto') card.atk++
+    }
 
     if (isZaytek) {
       if (table.b1) card.def++
