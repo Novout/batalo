@@ -1153,6 +1153,7 @@
           table[b].def -= table[a].atk
           if (table[b].def <= 0) {
             table.bcemetery.unshift(table[b])
+            if (table[b].name === 'Sataya') table.bcards.push(table[b])
             table[b] = undefined
             if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
           }
@@ -1160,6 +1161,7 @@
           table[a].def -= table[b].atk
           if (table[a].def <= 0) {
             table.acemetery.unshift(table[a])
+            if (table[a].name === 'Sataya') table.acards.push(table[a])
             table[a] = undefined
             if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
           }
@@ -1169,18 +1171,22 @@
         ) {
           table.acemetery.unshift(table[a])
           table.bcemetery.unshift(table[b])
+          if (table[a].name === 'Sataya') table.acards.push(table[a])
+          if (table[b].name === 'Sataya') table.bcards.push(table[b])
           table[b] = undefined
           table[a] = undefined
           if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
           if (table.bmain?.name === 'V Xwyyyw') table.bmain.extra.points++
         } else if (table[a].atk >= table[b].def) {
           table.bcemetery.unshift(table[b])
+          if (table[b].name === 'Sataya') table.bcards.push(table[b])
           table[a].def -= table[b].atk
           if (table[a].def <= 0) table[a] = undefined
           table[b] = undefined
           if (table.amain?.name === 'V Xwyyyw') table.amain.extra.points++
         } else if (table[b].atk >= table[a].def) {
           table.acemetery.unshift(table[a])
+          if (table[a].name === 'Sataya') table.acards.push(table[a])
           table[b].def -= table[a].atk
           if (table[b].def <= 0) table[b] = undefined
           table[a] = undefined

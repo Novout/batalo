@@ -531,10 +531,23 @@ export const oldWorldCards = (): Card[] => {
     skills: {},
   } as Card
 
+  const sataya = {
+    name: 'Sataya',
+    icon: 'raptor',
+    max: 2,
+    description: "Upon death, the card returns to the player's hand.",
+    textColor: 'black',
+    backgroundColor: 'beige',
+    atk: 2,
+    def: 4,
+    skills: {},
+  } as Card
+
   rawCards.push(vek)
   rawCards.push(riturno)
   rawCards.push(urdo)
   rawCards.push(nvt)
+  rawCards.push(sataya)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {
