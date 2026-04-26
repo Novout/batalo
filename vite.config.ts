@@ -16,7 +16,7 @@ export default defineConfig({
     version(),
     VitePWA({
       base: '/',
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       includeAssets: fg.sync('**/*.{png,svg,json,mp3,ico,txt,xml,ttf}', {
         cwd: resolve(__dirname, 'public'),
       }),
