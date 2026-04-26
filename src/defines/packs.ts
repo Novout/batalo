@@ -502,7 +502,7 @@ export const oldWorldCards = (): Card[] => {
 
   const nvt = {
     name: 'Novout',
-    icon: 'tiger',
+    icon: 'desolate',
     max: 2,
     description:
       "Copy the enemy card's stats. If there is no opponent, the default stats are left.",
