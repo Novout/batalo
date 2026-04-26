@@ -483,13 +483,40 @@ export const oldWorldCards = (): Card[] => {
     description: '',
     textColor: 'black',
     backgroundColor: 'beige',
-    atk: 3,
+    atk: 2,
     def: 3,
+    skills: {},
+  } as Card
+
+  const urdo = {
+    name: 'Urdo',
+    icon: 'tiger',
+    max: 1,
+    description: '',
+    textColor: 'black',
+    backgroundColor: 'beige',
+    atk: 6,
+    def: 6,
+    skills: {},
+  } as Card
+
+  const nvt = {
+    name: 'Novout',
+    icon: 'tiger',
+    max: 2,
+    description:
+      "Copy the enemy card's stats. If there is no opponent, the default stats are left.",
+    textColor: 'black',
+    backgroundColor: 'beige',
+    atk: 2,
+    def: 1,
     skills: {},
   } as Card
 
   rawCards.push(vek)
   rawCards.push(riturno)
+  rawCards.push(urdo)
+  rawCards.push(nvt)
 
   rawCards.forEach((card) => {
     for (let i = 0; i < card.max; i++) {

@@ -10,6 +10,14 @@
     v-else
     class="flex overflow-y-auto justify-between items-center flex-col w-full h-100vh"
   >
+    <div v-if="table.bmain?.name === 'Ayek'" class="flex flex-wrap gap-2">
+      <GameCardHand
+        v-for="(card, index) in table.acards"
+        :ayek="true"
+        :key="index"
+        :content="card"
+      />
+    </div>
     <div class="flex flex-wrap gap-25 w-full justify-center items-center">
       <GameCardMaster type="bot" :content="table.amain" />
       <div class="flex gap-2 flex-wrap">
@@ -538,6 +546,7 @@
     const isTarrAdel = card.name === 'Tarr Adél'
     const isForone = card.name === 'Forone'
     const isBigEffect = card.name === 'Big Effect'
+    const isNovout = card.name === 'Novout'
 
     if (isZaytek) {
       if (table.a1) card.def++
@@ -566,6 +575,25 @@
 
     if (isLastTree) {
       cycle.action++
+    }
+
+    if (isNovout) {
+      if (table.a1 && target === 'b1') {
+        card.atk = table.a1.atk
+        card.def = table.a1.def
+      }
+      if (table.a2 && target === 'b2') {
+        card.atk = table.a2.atk
+        card.def = table.a2.def
+      }
+      if (table.a3 && target === 'b3') {
+        card.atk = table.a3.atk
+        card.def = table.a3.def
+      }
+      if (table.a4 && target === 'b4') {
+        card.atk = table.a4.atk
+        card.def = table.a4.def
+      }
     }
 
     if (!table.b1 && target === 'b1') {
@@ -774,6 +802,7 @@
     const isTarrAdel = card.name === 'Tarr Adél'
     const isForone = card.name === 'Forone'
     const isBigEffect = card.name === 'Big Effect'
+    const isNovout = card.name === 'Novout'
 
     if (isZaytek) {
       if (table.b1) card.def++
@@ -798,6 +827,25 @@
       if (table.a2) card.def++
       if (table.a3) card.def++
       if (table.a4) card.def++
+    }
+
+    if (isNovout) {
+      if (table.b1 && target === 'a1') {
+        card.atk = table.b1.atk
+        card.def = table.b1.def
+      }
+      if (table.b2 && target === 'a2') {
+        card.atk = table.b2.atk
+        card.def = table.b2.def
+      }
+      if (table.b3 && target === 'a3') {
+        card.atk = table.b3.atk
+        card.def = table.b3.def
+      }
+      if (table.b4 && target === 'a4') {
+        card.atk = table.b4.atk
+        card.def = table.b4.def
+      }
     }
 
     if (

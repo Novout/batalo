@@ -6,7 +6,12 @@
       color: content?.textColor,
     }"
     @click="emit('select', props.content)"
-    class="lg:w-35 w-30 transform hover:transform-translate-y--10 transition-all p-2 flex border-3 hover:border-black cursor-pointer border-solid border-none cursor-pointer flex-col items-center rounded-md"
+    :class="[
+      !props.ayek
+        ? 'transform hover:transform-translate-y--10 transition-all border-3 hover:border-black cursor-pointer border-solid'
+        : '',
+    ]"
+    class="lg:w-35 w-30 p-2 flex flex-col items-center rounded-md"
   >
     <div class="flex justify-between w-full text-lg">
       <div class="flex items-center gap-2">
@@ -26,7 +31,9 @@
       <GameIcons :icon="props.content?.icon" />
     </div>
     <p>{{ props.content?.name }}</p>
-    <p v-if="isHovered" class="text-xs">{{ props.content?.description }}</p>
+    <p v-if="isHovered && !props.ayek" class="text-xs">
+      {{ props.content?.description }}
+    </p>
   </div>
 </template>
 
@@ -37,6 +44,7 @@
 
   const props = defineProps<{
     content: Maybe<Card>
+    ayek?: boolean
   }>()
 
   const emit = defineEmits(['select'])
