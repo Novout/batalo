@@ -36,7 +36,7 @@
       <IconTriangle
         v-if="cycle.roundSet === 'player'"
         :class="cycle.roundSet === 'player' ? '' : ''"
-        class="w-10 h-10 text-black"
+        class="w-10 h-10 text-green"
       />
       <IconTriangle
         v-if="cycle.roundSet === 'combat'"
@@ -78,16 +78,16 @@
         </div>
       </div>
       <div class="flex gap-25 w-full justify-center items-center">
-        <div
-          :class="[
-            cycle.action > 0
-              ? 'border-t-6 border-l-0 border-r-0 border-b-0 border-green border-solid'
-              : '',
-          ]"
-          class="flex flex-wrap gap-2"
-        >
+        <div class="flex flex-wrap gap-2">
           <GameCardHand
             v-for="(card, index) in table.bcards"
+            :class="[
+              card === onSelectCard && table.bmain?.name === 'Colos'
+                ? 'border-red border-4 border-solid'
+                : card === onSelectCard
+                  ? 'border-green border-4 border-solid'
+                  : '',
+            ]"
             :key="index"
             :content="card"
             @select="(card: Card) => (onSelectCard = card)"

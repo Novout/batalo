@@ -8,7 +8,7 @@
     @click="emit('select', props.content)"
     :class="[
       !props.ayek
-        ? 'transform hover:transform-translate-y--10 transition-all border-3 hover:border-black cursor-pointer border-solid'
+        ? 'transform hover:transform-translate-y--10 transition-all cursor-pointer'
         : '',
     ]"
     class="lg:w-35 w-30 p-2 flex flex-col items-center rounded-md"
